@@ -6,87 +6,90 @@
   <title>Organigrama Subsecretaría</title>
 
   <style>
-    <style>
-:root{
-  --bg:#2f3192;
-  --white:#f3f3f3;
-  --line:#ffffff;
-  --cyan:#27c2ef;
-  --text-dark:#2f3192;
-  --shadow:0 10px 24px rgba(0,0,0,.16);
-}
+    :root{
+      --bg:#2f3192;
+      --white:#f3f3f3;
+      --line:#ffffff;
+      --cyan:#27c2ef;
+      --text-dark:#2f3192;
+      --shadow:0 10px 24px rgba(0,0,0,.16);
+    }
 
-*{
-  box-sizing:border-box;
-}
+    *{
+      box-sizing:border-box;
+    }
 
-body{
-  margin:0;
-  font-family:Arial, Helvetica, sans-serif;
-  background:#e9eef5;
-}
+    body{
+      margin:0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:#e9eef5;
+    }
 
-.page{
-  width:100%;
-  margin:0;
-  padding:18px 0;
-}
+    .page{
+      width:100%;
+      padding:18px;
+    }
 
-.org-wrapper{
-  width:100%;
-  max-width:1600px;
-  margin:0 auto;
-  background:var(--bg);
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 12px 35px rgba(15,23,42,.15);
-  position:relative;
-}
+    .org-wrapper{
+      max-width:1600px;
+      margin:0 auto;
+      background:var(--bg);
+      border-radius:14px;
+      overflow:hidden;
+      box-shadow:0 12px 35px rgba(15,23,42,.15);
+    }
 
-.org-header-bar{
-  width:100%;
-  height:18px;
-  position:relative;
-  background:var(--bg);
-}
+    .org-header-bar{
+      width:100%;
+      height:18px;
+      position:relative;
+      background:var(--bg);
+    }
 
-.org-header-bar::before,
-.org-header-bar::after{
-  content:"";
-  position:absolute;
-  top:0;
-  height:18px;
-  width:165px;
-}
+    .org-header-bar::before,
+    .org-header-bar::after{
+      content:"";
+      position:absolute;
+      top:0;
+      height:18px;
+      width:165px;
+    }
 
-.org-header-bar::before{
-  left:50%;
-  transform:translateX(-100%);
-  background:#1fa7e4;
-}
+    .org-header-bar::before{
+      left:50%;
+      transform:translateX(-100%);
+      background:#1fa7e4;
+    }
 
-.org-header-bar::after{
-  left:50%;
-  background:#ef1838;
-}
+    .org-header-bar::after{
+      left:50%;
+      background:#ef1838;
+    }
 
-/* TABLERO */
-.board{
+    .board{
+      position:relative;
+      width:100%;
+      aspect-ratio:1600 / 920;
+      background:var(--bg);
+    }
+
+   .board{
   position:relative;
   width:100%;
   aspect-ratio:1600 / 920;
-  min-height:920px;
   background:var(--bg);
 }
 
-/* LINEAS */
+/* SVG de líneas */
 .board svg.lines{
   position:absolute;
-  inset:0;
+  top:0;
+  left:0;
   width:100%;
   height:100%;
   pointer-events:none;
   z-index:2;
+  shape-rendering:geometricPrecision;
 }
 
 .board svg.lines line{
@@ -96,7 +99,7 @@ body{
   vector-effect:non-scaling-stroke;
 }
 
-/* TITULOS */
+/* Títulos */
 .section-title{
   position:absolute;
   z-index:3;
@@ -106,23 +109,24 @@ body{
   text-align:center;
   transform:translateX(-50%);
   white-space:nowrap;
-  font-size:clamp(16px,1.45vw,26px);
+  font-size:clamp(16px, 1.45vw, 26px);
 }
 
-/* NODOS */
+/* Nodos */
 .node{
   position:absolute;
   z-index:4;
   border:none;
   cursor:pointer;
   transition:transform .18s ease, filter .18s ease;
+  text-align:center;
   display:flex;
   align-items:center;
   justify-content:center;
-  text-align:center;
   overflow:hidden;
   word-break:break-word;
   padding:.35% .35%;
+  border-radius:0;
 }
 
 .node:hover{
@@ -141,108 +145,174 @@ body{
   background:var(--cyan);
   color:var(--text-dark);
   font-weight:400;
+  box-shadow:none;
 }
 
 .node.big{
-  font-size:clamp(13px,1.05vw,18px);
+  font-size:clamp(13px, 1.05vw, 18px);
   font-weight:800;
+  letter-spacing:.2px;
 }
 
 .node.main{
-  font-size:clamp(9px,.72vw,12px);
+  font-size:clamp(9px, .72vw, 12px);
   line-height:1.08;
 }
 
 .node.small{
-  font-size:clamp(8px,.60vw,10px);
+  font-size:clamp(8px, .60vw, 10px);
   line-height:1.06;
+  padding:.30% .30%;
 }
+    
+    .footer-band{
+      background:#18b9e5;
+      color:#2f3192;
+      padding:16px 28px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+      font-weight:800;
+      font-size:24px;
+      letter-spacing:.3px;
+      position:relative;
+    }
 
-/* FOOTER */
-.footer-band{
-  width:100%;
-  background:#18b9e5;
-  color:#2f3192;
-  padding:16px 28px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  font-weight:800;
-  font-size:24px;
-  position:relative;
-}
+    .footer-center{
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      width:240px;
+      height:22px;
+    }
 
-/* MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.38);
-  display:none;
-  z-index:9999;
-}
+    .footer-center::before,
+    .footer-center::after{
+      content:"";
+      position:absolute;
+      top:0;
+      width:120px;
+      height:22px;
+      border-radius:0 0 18px 18px;
+    }
 
-.modal.show{
-  display:block;
-}
+    .footer-center::before{
+      left:0;
+      background:linear-gradient(90deg, rgba(47,49,146,0) 0%, #24bde7 55%, #ffffff 75%, #ef1838 100%);
+    }
 
-.modal-card{
-  position:absolute;
-  top:50%;
-  left:50%;
-  transform:translate(-50%,-50%);
-  width:min(1100px,95vw);
-  max-height:88vh;
-  background:#fff;
-  border-radius:4px;
-  box-shadow:0 20px 50px rgba(0,0,0,.25);
-  overflow:hidden;
-}
+    .footer-center::after{
+      right:0;
+      background:linear-gradient(90deg, #ffffff 0%, #ef1838 30%, #ef1838 70%, rgba(47,49,146,0) 100%);
+      opacity:.85;
+    }
 
-.modal-header{
-  background:#f3f3f3;
-  border-bottom:1px solid #d8d8d8;
-  padding:16px 22px;
-  position:relative;
-}
+    /* ===== MODAL ===== */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.38);
+      display:none;
+      z-index:9999;
+    }
 
-.modal-title{
-  margin:0;
-  font-size:22px;
-  font-weight:700;
-  color:#0f2747;
-  padding-right:40px;
-}
+    .modal.show{
+      display:block;
+    }
 
-.modal-close{
-  position:absolute;
-  top:8px;
-  right:12px;
-  font-size:32px;
-  border:none;
-  background:none;
-  cursor:pointer;
-  color:#7a7a7a;
-}
+    .modal-card{
+      position:absolute;
+      top:50%;
+      left:50%;
+      transform:translate(-50%, -50%);
+      width:min(1100px, 95vw);
+      max-height:88vh;
+      background:#ffffff;
+      border-radius:4px;
+      box-shadow:0 20px 50px rgba(0,0,0,.25);
+      overflow:hidden;
+    }
 
-.modal-body{
-  padding:28px 36px;
-  font-size:15px;
-  line-height:1.6;
-  overflow:auto;
-  max-height:calc(88vh - 72px);
-}
+    .modal-header{
+      background:#f3f3f3;
+      border-bottom:1px solid #d8d8d8;
+      padding:16px 22px;
+      position:relative;
+    }
 
-/* RESPONSIVE */
-@media (max-width: 900px){
+    .modal-title{
+      margin:0;
+      font-size:22px;
+      line-height:1.2;
+      font-weight:700;
+      color:#0f2747;
+      padding-right:40px;
+    }
 
+    .modal-close{
+      position:absolute;
+      top:8px;
+      right:12px;
+      font-size:32px;
+      line-height:1;
+      border:none;
+      background:none;
+      cursor:pointer;
+      color:#7a7a7a;
+      padding:0;
+      width:30px;
+      height:30px;
+    }
+
+    .modal-body{
+      padding:28px 36px 34px;
+      font-size:15px;
+      color:#2f2f2f;
+      line-height:1.6;
+      overflow:auto;
+      max-height:calc(88vh - 72px);
+    }
+
+    .modal-body p{
+      margin:0 0 14px 0;
+    }
+
+    .modal-body .persona{
+      font-weight:700;
+      color:#0f2747;
+      margin-bottom:10px;
+    }
+
+    .modal-body .cargo{
+      font-weight:700;
+      color:#0f2747;
+      margin-bottom:16px;
+    }
+
+    .modal-body .subtitulo{
+      font-weight:700;
+      text-decoration:underline;
+      margin-top:10px;
+      margin-bottom:8px;
+    }
+
+    .modal-body ol{
+      margin:0;
+      padding-left:20px;
+    }
+
+    .modal-body li{
+      margin-bottom:6px;
+    }
+
+    @media (max-width: 900px){
   .org-wrapper{
     overflow-x:auto;
   }
 
   .board,
   .footer-band{
-    width:1600px;
     min-width:1600px;
   }
 
@@ -259,7 +329,7 @@ body{
     transform:none !important;
   }
 }
-</style>
+    
   </style>
 </head>
 <body>
@@ -270,11 +340,11 @@ body{
 
      <div class="board">
 
- <!-- TÍTULOS -->
-<div class="section-title" style="left:400px; top:100px;">Áreas de Control</div>
-<div class="section-title" style="left:1020px; top:100px;">Áreas de Asesoría</div>
-<div class="section-title" style="left:110px; top:470px;">Áreas de Negocio</div>
-<div class="section-title" style="left:1320px; top:470px;">Áreas de Soporte</div>
+<!-- TÍTULOS -->
+<div class="section-title" style="left:31.25%; top:10.87%;">Áreas de Control</div>
+<div class="section-title" style="left:76.25%; top:10.87%;">Áreas de Asesoría</div>
+<div class="section-title" style="left:13.75%; top:51.09%;">Áreas de Negocio</div>
+<div class="section-title" style="left:86.25%; top:51.09%;">Áreas de Soporte</div>
 
 <!-- LÍNEAS -->
 <svg class="lines" viewBox="0 0 1600 920" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
@@ -367,54 +437,52 @@ body{
   
 </svg>
        
-        <!-- NODOS -->
-        <button class="node white big"
-          style="left:655px; top:62px; width:260px; height:74px;"
-          data-title="SUBSECRETARIA"
-          data-info='
-            <p class="persona">María Elisa Cabezón Otero</p><p class="cargo">Subsecretaria de Previsión Social</p>
-          <p>De conformidad con lo dispuesto en el artículo 41 de la ley Nº20.255 de 2008, el/la Subsecretario/a de Previsión Social es el/la jefe/a Superior de la Subsecretaría de Previsión Social, órgano de colaboración inmediata del Ministerio del Trabajo y Previsión Social.</p>'>
-          SUBSECRETARIA
-        </button>
+       <!-- NODOS -->
+<button class="node white big"
+  style="left:40.94%; top:6.74%; width:16.25%; height:8.04%;"
+  data-title="SUBSECRETARIA"
+  data-info='
+    <p class="persona">María Elisa Cabezón Otero</p><p class="cargo">Subsecretaria de Previsión Social</p>
+  <p>De conformidad con lo dispuesto en el artículo 41 de la ley Nº20.255 de 2008, el/la Subsecretario/a de Previsión Social es el/la jefe/a Superior de la Subsecretaría de Previsión Social, órgano de colaboración inmediata del Ministerio del Trabajo y Previsión Social.</p>'>
+  SUBSECRETARIA
+</button>
 
-        <button class="node white main"
-          style="left:400px; top:150px; width:165px; height:58px;"
-          data-title="Auditoría Interna"
-          data-info='
-            <p class="persona">Johnny Astudillo Rojas</p><p class="cargo">Jefatura Auditoría Interna</p>
-          <p>Unidad que depende directamente del Subsecretario/a de Previsión Social, encargada de prestar asesoría especializada en materias de auditoría y control interno a la autoridad superior de la Institución, con el objetivo de evaluar el funcionamiento y el cumplimiento de la normativa en los proceso contables, financieros, administrativos y estratégicos de la Subsecretaría de Previsión Social.</p><p class="subtitulo">Funciones:</p>
-          <ol><li>Evaluar en forma permanente los sistemas de control interno institucional y proponer las recomendaciones para su mejoramiento.</li><li>Evaluar el grado de economía y eficiencia con que se utilizan los recursos humanos, financieros y materiales.</li>
-          <li>Promover la adopción de mecanismos de autocontrol en las unidades operativas de la organización.</li>
-          <li>Verificar que la gestión de la institución se enmarque en los lineamientos estratégicos definidos y que las decisiones de la autoridad se ajusten al ordenamiento jurídico que rige.</li>
-          <li>Elaborar y proponer para su aprobación el Programa Anual de Auditoría.</li><li>Efectuar seguimiento de las recomendaciones y observaciones hechas a la administración durante los procesos de auditoría.</li>
-          <li>Efectuar seguimiento de las medidas preventivas y correctivas emanadas de los informes de auditoría interna, aprobadas por la autoridad.</li>
-          <li>Coordinar y facilitar las orientaciones emanadas del Consejo de Auditoría Interna General de Gobierno (CAIGG) y Auditoría Ministerial.</li></ol>'>
-          Auditoría<br>Interna
-        </button>
+<button class="node white main"
+  style="left:25%; top:16.30%; width:10.31%; height:6.30%;"
+  data-title="Auditoría Interna"
+  data-info='
+    <p class="persona">Johnny Astudillo Rojas</p><p class="cargo">Jefatura Auditoría Interna</p>
+  <p>Unidad que depende directamente del Subsecretario/a de Previsión Social, encargada de prestar asesoría especializada en materias de auditoría y control interno a la autoridad superior de la Institución, con el objetivo de evaluar el funcionamiento y el cumplimiento de la normativa en los proceso contables, financieros, administrativos y estratégicos de la Subsecretaría de Previsión Social.</p><p class="subtitulo">Funciones:</p>
+  <ol><li>Evaluar en forma permanente los sistemas de control interno institucional y proponer las recomendaciones para su mejoramiento.</li><li>Evaluar el grado de economía y eficiencia con que se utilizan los recursos humanos, financieros y materiales.</li>
+  <li>Promover la adopción de mecanismos de autocontrol en las unidades operativas de la organización.</li>
+  <li>Verificar que la gestión de la institución se enmarque en los lineamientos estratégicos definidos y que las decisiones de la autoridad se ajusten al ordenamiento jurídico que rige.</li>
+  <li>Elaborar y proponer para su aprobación el Programa Anual de Auditoría.</li><li>Efectuar seguimiento de las recomendaciones y observaciones hechas a la administración durante los procesos de auditoría.</li>
+  <li>Efectuar seguimiento de las medidas preventivas y correctivas emanadas de los informes de auditoría interna, aprobadas por la autoridad.</li>
+  <li>Coordinar y facilitar las orientaciones emanadas del Consejo de Auditoría Interna General de Gobierno (CAIGG) y Auditoría Ministerial.</li></ol>'>
+  Auditoría<br>Interna
+</button>
 
-        <button class="node white main"
-          style="left:400px; top:230px; width:165px; height:58px;"
-          data-title="División Fiscalía"
-          data-info='
-            <p class="persona">Jaime Ale Tapia</p><p class="cargo">Fiscal</p>
-          <p>División responsable de velar por la legalidad y control tanto de las actuaciones y/o de los actos administrativos que se suscriban al interior de la Subsecretaría, asesorando al Gabinete, otras Divisiones, Direcciones, Unidades y Subunidades para el cumplimiento de las leyes, reglamentos e instrucciones internas del Servicio.</p>
-          <p class="subtitulo">Funciones:</p><ol>
-          <li>Asesorar a la autoridad en la dictación de los actos administrativos que requiera la Institución para el debido cumplimiento de sus funciones y todas aquellas materias jurídicas que requiera una interpretación y análisis, proporcionando soluciones oportunas, ajustadas a derecho y en el marco legal vigente.</li>
-          <li>Coordinar las acciones relativas al Sistema de Integridad Pública, velando por el estricto cumplimiento de la probidad administrativa y la ética pública, así como los compromisos relativos a la Unidad de Análisis Financiero (UAF) y el sistema interno de prevención de lavado de activos, financiamiento del terrorismo y delitos funcionarios. Corresponde a esta jefatura el cargo de Oficial de Cumplimiento Interno ante la UAF.</li>
-          <li>Gestionar respuestas oportunas y adecuadas a las solicitudes de información efectuadas invocando la ley N°20.285, de 2008, sobre Acceso a la Información Pública con el objetivo de cumplir con los principios de relevancia, libertad de información, apertura o transparencia, máxima divulgación, divisibilidad, facilitación, no discriminación, oportunidad, control, responsabilidad y gratuidad.</li>
-          <li>Velar por el cumplimiento de la ley N°20.730, de 2014, que Regula el Lobby y las Gestiones que Representan Intereses Particulares ante la Autoridades y Funcionarios, con el objetivo de registrar y dar publicidad a las reuniones y audiencias solicitadas por lobbistas y gestores de intereses particulares que tengan como finalidad influir en una decisión pública, los viajes que realicen el ejercicio de sus funciones y los regalos que reciban en cuanto autoridad y funcionarios.</li>
-          <li>Corresponde a su jefatura actuar como Ministro de Fe de la Institución.</li></ol>'>
-          División<br>Fiscalía
-        </button>
+<button class="node white main"
+  style="left:25%; top:25%; width:10.31%; height:6.30%;"
+  data-title="División Fiscalía"
+  data-info='
+    <p class="persona">Jaime Ale Tapia</p><p class="cargo">Fiscal</p>
+  <p>División responsable de velar por la legalidad y control tanto de las actuaciones y/o de los actos administrativos que se suscriban al interior de la Subsecretaría, asesorando al Gabinete, otras Divisiones, Direcciones, Unidades y Subunidades para el cumplimiento de las leyes, reglamentos e instrucciones internas del Servicio.</p>
+  <p class="subtitulo">Funciones:</p><ol>
+  <li>Asesorar a la autoridad en la dictación de los actos administrativos que requiera la Institución para el debido cumplimiento de sus funciones y todas aquellas materias jurídicas que requiera una interpretación y análisis, proporcionando soluciones oportunas, ajustadas a derecho y en el marco legal vigente.</li>
+  <li>Coordinar las acciones relativas al Sistema de Integridad Pública, velando por el estricto cumplimiento de la probidad administrativa y la ética pública, así como los compromisos relativos a la Unidad de Análisis Financiero (UAF) y el sistema interno de prevención de lavado de activos, financiamiento del terrorismo y delitos funcionarios. Corresponde a esta jefatura el cargo de Oficial de Cumplimiento Interno ante la UAF.</li>
+  <li>Gestionar respuestas oportunas y adecuadas a las solicitudes de información efectuadas invocando la ley N°20.285, de 2008, sobre Acceso a la Información Pública con el objetivo de cumplir con los principios de relevancia, libertad de información, apertura o transparencia, máxima divulgación, divisibilidad, facilitación, no discriminación, oportunidad, control, responsabilidad y gratuidad.</li>
+  <li>Velar por el cumplimiento de la ley N°20.730, de 2014, que Regula el Lobby y las Gestiones que Representan Intereses Particulares ante la Autoridades y Funcionarios, con el objetivo de registrar y dar publicidad a las reuniones y audiencias solicitadas por lobbistas y gestores de intereses particulares que tengan como finalidad influir en una decisión pública, los viajes que realicen el ejercicio de sus funciones y los regalos que reciban en cuanto autoridad y funcionarios.</li>
+  <li>Corresponde a su jefatura actuar como Ministro de Fe de la Institución.</li></ol>'>
+  División<br>Fiscalía
+</button>
 
-        <button class="node cyan small"
-  style="left:170px; top:225px; width:125px; height:58px;"
+<button class="node cyan small"
+  style="left:10.63%; top:24.46%; width:7.81%; height:6.30%;"
   data-title="Unidad de Cumplimiento Normativo, Transparencia e Integridad"
   data-info='
     <p>Esta unidad integra la División Fiscalía de la Subsecretaría de Previsión Social, y sus funciones principales son las siguientes:</p>
-
     <p class="subtitulo">Funciones:</p>
-
     <ol>
       <li>Garantizar la legalidad de los actos administrativos de la Subsecretaría mediante el análisis y estudio de los antecedentes relevantes, asegurando que se dicten conforme a la normativa legal y administrativa vigente, además de proponer las medidas correctivas que correspondan cuando sea necesario.</li>
       <li>Velar por el cumplimiento de las normas legales y administrativas aplicables, realizando un análisis detallado de los antecedentes de acuerdo con la normativa vigente y la jurisprudencia de la Contraloría General de la República, efectuando un control de legalidad de los actos sometidos a su revisión.</li>
@@ -432,265 +500,265 @@ body{
   Unidad de<br>Cumplimiento<br>Normativo,<br>Transparencia<br>e Integridad
 </button>
 
-        <button class="node cyan small"
-          style="left:170px; top:292px; width:125px; height:58px;"
-          data-title="Unidad de Contratación Pública y Coordinación Administrativa Interna"
-          data-info='
-            <p>Esta unidad integra la División Fiscalía de la Subsecretaría de Previsión Social, y sus funciones principales son las siguientes:</p>
-          <p>1. Asesorar y efectuar el control de legalidad de los actos administrativos (bases de licitación, aprobación de contratos, resoluciones de adjudicación, etc.), relativos a los procesos de compras y contrataciones públicas regulados por la ley N°19.886, su Reglamento y otras normas afines.</p>
-          <p>2. Asesorar, apoyar y gestionar todas aquellas acciones necesarias y/o gestiones, para dar respuesta oportuna a los reclamos e impugnaciones que se presenten en contra de los actos administrativos relativos a los procesos de compras y contrataciones publicas regulados por la ley N°19.886 y su Reglamento.</p>
-          <p>3. Actuar como contraparte técnica con las distintas Direcciones y Unidades internas en las materias referidas a contrataciones públicas, a fin de dar cumplimiento con la misión y lineamientos de la Subsecretaría en la ejecución de los distintos procesos de contratación.</p>
-          <p>4. Asesorar y efectuar el control de legalidad de los actos relativos a la contratación de personal y comisiones de servicio al extranjero, cuando así lo requiera la Unidad de Gestión y Desarrollo de las Personas de la Subsecretaría.</p>
-          <p>5. Apoyar, asesorar y realizar el control de legalidad de los actos administrativos relativo a la designación de los integrantes de los Comités y Comisiones que se relacionan con esta Subsecretaría de Previsión Social.</p>
-          <p>6. Diagnosticar y levantar aquellos procesos que se llevaran a cabo en el ejercicio de las funciones la División, a fin de dar cumplimiento con la planificación anual de la misma.</p>
-          <p>7. Monitorear y reportar todos aquellos aspectos relativos a la planificación y control de gestión de la División Fiscalía., dando seguimiento eficaz y oportuno para el cumplimiento del compromiso de la División en el Convenio de Desempeño Colectivo (CDC).</p>
-          <p>8. Asesorar y efectuar el control de legalidad de los actos administrativos relativos a los nombramientos de las autoridades relacionadas con la Subsecretaría de Previsión Social (SUSESO, SUPEN, IPS e ISL), así como la gestión de los Convenios de Alta Dirección Pública (ADP), regulados por la ley N°19.882, el decreto N°172 de 2014 del Ministerio de Hacienda y otras normas afines.</p>
-          <p>9. Coordinar con la Dirección de Educación Previsional la gestión oportuna del proceso referido Fondo para la Educación Previsional, regulado en la N°20.255 de 2008, y las respectivas bases administrativas y técnicas que llamen al Concurso FEP.</p>
-          <p>10. Asesorar y efectuar el control de legalidad de los actos administrativos relativos a la Encuesta de Protección Social (EPS), en coordinación con la Dirección de Estudios Previsionales.</p>
-          <p>11. Realizar las gestiones que le encomiende su superior jerárquico, que digan relación con las funciones de la División.</p>'>
-          Unidad de Contratación<br>Pública y<br>Coordinación<br>Administrativa
-        </button>
+<button class="node cyan small"
+  style="left:10.63%; top:31.74%; width:7.81%; height:6.30%;"
+  data-title="Unidad de Contratación Pública y Coordinación Administrativa Interna"
+  data-info='
+    <p>Esta unidad integra la División Fiscalía de la Subsecretaría de Previsión Social, y sus funciones principales son las siguientes:</p>
+  <p>1. Asesorar y efectuar el control de legalidad de los actos administrativos (bases de licitación, aprobación de contratos, resoluciones de adjudicación, etc.), relativos a los procesos de compras y contrataciones públicas regulados por la ley N°19.886, su Reglamento y otras normas afines.</p>
+  <p>2. Asesorar, apoyar y gestionar todas aquellas acciones necesarias y/o gestiones, para dar respuesta oportuna a los reclamos e impugnaciones que se presenten en contra de los actos administrativos relativos a los procesos de compras y contrataciones publicas regulados por la ley N°19.886 y su Reglamento.</p>
+  <p>3. Actuar como contraparte técnica con las distintas Direcciones y Unidades internas en las materias referidas a contrataciones públicas, a fin de dar cumplimiento con la misión y lineamientos de la Subsecretaría en la ejecución de los distintos procesos de contratación.</p>
+  <p>4. Asesorar y efectuar el control de legalidad de los actos relativos a la contratación de personal y comisiones de servicio al extranjero, cuando así lo requiera la Unidad de Gestión y Desarrollo de las Personas de la Subsecretaría.</p>
+  <p>5. Apoyar, asesorar y realizar el control de legalidad de los actos administrativos relativo a la designación de los integrantes de los Comités y Comisiones que se relacionan con esta Subsecretaría de Previsión Social.</p>
+  <p>6. Diagnosticar y levantar aquellos procesos que se llevaran a cabo en el ejercicio de las funciones la División, a fin de dar cumplimiento con la planificación anual de la misma.</p>
+  <p>7. Monitorear y reportar todos aquellos aspectos relativos a la planificación y control de gestión de la División Fiscalía., dando seguimiento eficaz y oportuno para el cumplimiento del compromiso de la División en el Convenio de Desempeño Colectivo (CDC).</p>
+  <p>8. Asesorar y efectuar el control de legalidad de los actos administrativos relativos a los nombramientos de las autoridades relacionadas con la Subsecretaría de Previsión Social (SUSESO, SUPEN, IPS e ISL), así como la gestión de los Convenios de Alta Dirección Pública (ADP), regulados por la ley N°19.882, el decreto N°172 de 2014 del Ministerio de Hacienda y otras normas afines.</p>
+  <p>9. Coordinar con la Dirección de Educación Previsional la gestión oportuna del proceso referido Fondo para la Educación Previsional, regulado en la N°20.255 de 2008, y las respectivas bases administrativas y técnicas que llamen al Concurso FEP.</p>
+  <p>10. Asesorar y efectuar el control de legalidad de los actos administrativos relativos a la Encuesta de Protección Social (EPS), en coordinación con la Dirección de Estudios Previsionales.</p>
+  <p>11. Realizar las gestiones que le encomiende su superior jerárquico, que digan relación con las funciones de la División.</p>'>
+  Unidad de Contratación<br>Pública y<br>Coordinación<br>Administrativa
+</button>
 
-        <button class="node white main"
-          style="left:705px; top:230px; width:165px; height:58px;"
-          data-title="Gabinete"
-          data-info='
-            <p class="persona">Cristian Olivares Pino</p><p class="cargo">Jefe de Gabinete</p><p>Ejerce el control general en la gestión de la Subsecretaría de Previsión Social, a través de acciones de coordinación entre sus distintas Divisiones, Direcciones, Unidades y Subunidades para el funcionamiento eficiente del servicio y la implementación de los productos estratégicos. Además, asesora a la autoridad del servicio en todas las materias relacionadas con el quehacer técnico y administrativo de la Subsecretaría.</p><p>Gabinete se relacionará directamente con la autoridad entregando la información e insumos necesarios para la toma de decisiones y el adecuado control interno de la Institución.</p><p>Este se relaciona de manera directa con los jefes/as de Gabinete de los servicios relacionados del sector previsional con el objetivo de entregar los lineamientos de la autoridad y supervisar la implementación de las políticas y el desarrollo del programa de Gobierno.</p>'>
-          Gabinete
-        </button>
+<button class="node white main"
+  style="left:44.06%; top:25%; width:10.31%; height:6.30%;"
+  data-title="Gabinete"
+  data-info='
+    <p class="persona">Cristian Olivares Pino</p><p class="cargo">Jefe de Gabinete</p><p>Ejerce el control general en la gestión de la Subsecretaría de Previsión Social, a través de acciones de coordinación entre sus distintas Divisiones, Direcciones, Unidades y Subunidades para el funcionamiento eficiente del servicio y la implementación de los productos estratégicos. Además, asesora a la autoridad del servicio en todas las materias relacionadas con el quehacer técnico y administrativo de la Subsecretaría.</p><p>Gabinete se relacionará directamente con la autoridad entregando la información e insumos necesarios para la toma de decisiones y el adecuado control interno de la Institución.</p><p>Este se relaciona de manera directa con los jefes/as de Gabinete de los servicios relacionados del sector previsional con el objetivo de entregar los lineamientos de la autoridad y supervisar la implementación de las políticas y el desarrollo del programa de Gobierno.</p>'>
+  Gabinete
+</button>
 
-        <button class="node cyan small"
-          style="left:1060px; top:183px; width:125px; height:44px;"
-          data-title="Asesores"
-          data-info='
-            <p class="persona">Macarena Pinto Gutiérrez 
+<button class="node cyan small"
+  style="left:66.25%; top:19.89%; width:7.81%; height:4.78%;"
+  data-title="Asesores"
+  data-info='
+    <p class="persona">Macarena Pinto Gutiérrez 
 Jefatura Asesores</p><p>Área encargada de proporcionar apoyo a la gestión técnica y política de la Subsecretaría de Previsión Social, en la creación de políticas públicas a través de propuestas de elaboración y modificación del marco normativo y reglamentario en materias previsionales y de seguridad laboral.</p><p class="subtitulo">Funciones:</p><ol><li>Coordinar reuniones y mesas de trabajo para el análisis de políticas públicas.</li><li>Revisión de normativas vigentes, para el análisis de propuestas legales.</li><li>Diseño de propuestas normativas para la creación políticas públicas.</li><li>Elaboración de minutas y documentos de trabajo para el análisis, discusión, elaboración y evaluación de políticas públicas en materia previsional.</li><li>Acompañamiento a la autoridad en procesos de discusión de proyectos de ley en el Congreso.</li></ol>'>
-          Asesores
-        </button>
+  Asesores
+</button>
 
-        <button class="node cyan small"
-          style="left:1060px; top:240px; width:125px; height:44px;"
-          data-title="Unidad de Prensa y Comunicaciones"
-          data-info='
-            <p class="persona">Eugenio Figueroa Bustos</p><p class="cargo">Jefatura Unidad de Prensa y Comunicaciones</p><p>Unidad responsable de generar contenidos informativos sobre las políticas públicas que emanan de la Subsecretaría de Previsión Social, y coordinar su entrega a los medios de comunicación.</p><p class="subtitulo">Funciones:</p><ol><li>Proponer, diseñar, coordinar y supervisar la implementación de campañas comunicacionales sobre beneficios, programas y políticas previsionales y de seguridad y salud en el trabajo.</li><li>Gestionar entrevistas, reportajes y publicaciones de la autoridad y vocerías técnicas, cuando se estimen necesarias.</li><li>Mantener un proceso de comunicación continua con los encargados de prensa del Ministerio del Trabajo y Previsión Social, Subsecretaría del Trabajo y servicios relacionados.</li><li>Comunicar a las autoridades la Agenda Pública del o la Subsecretario/a.</li><li>Desarrollar productos audiovisuales y gráficos orientados a la difusión y educación previsional.</li><li>Supervisar y coordinar la correcta aplicación de la imagen corporativa de productos generados por la Institución o por ella patrocinados.</li><li>Administrar y actualizar soportes online informativos de la Subsecretaría: web y redes sociales.</li></ol>'>
-          Unidad de Prensa y<br>Comunicaciones
-        </button>
+<button class="node cyan small"
+  style="left:66.25%; top:26.09%; width:7.81%; height:4.78%;"
+  data-title="Unidad de Prensa y Comunicaciones"
+  data-info='
+    <p class="persona">Eugenio Figueroa Bustos</p><p class="cargo">Jefatura Unidad de Prensa y Comunicaciones</p><p>Unidad responsable de generar contenidos informativos sobre las políticas públicas que emanan de la Subsecretaría de Previsión Social, y coordinar su entrega a los medios de comunicación.</p><p class="subtitulo">Funciones:</p><ol><li>Proponer, diseñar, coordinar y supervisar la implementación de campañas comunicacionales sobre beneficios, programas y políticas previsionales y de seguridad y salud en el trabajo.</li><li>Gestionar entrevistas, reportajes y publicaciones de la autoridad y vocerías técnicas, cuando se estimen necesarias.</li><li>Mantener un proceso de comunicación continua con los encargados de prensa del Ministerio del Trabajo y Previsión Social, Subsecretaría del Trabajo y servicios relacionados.</li><li>Comunicar a las autoridades la Agenda Pública del o la Subsecretario/a.</li><li>Desarrollar productos audiovisuales y gráficos orientados a la difusión y educación previsional.</li><li>Supervisar y coordinar la correcta aplicación de la imagen corporativa de productos generados por la Institución o por ella patrocinados.</li><li>Administrar y actualizar soportes online informativos de la Subsecretaría: web y redes sociales.</li></ol>'>
+  Unidad de Prensa y<br>Comunicaciones
+</button>
 
-        <button class="node cyan small"
-          style="left:1060px; top:298px; width:125px; height:44px;"
-          data-title="Unidad de Participación Ciudadana y Género"
-          data-info='
-            <p class="persona">Katherine Quijada López</p><p class="cargo">Jefatura Unidad de Participación Ciudadana y Género</p><p>Unidad encargada de implementar los mecanismos establecidos en la ley N°20.500, de “Asociaciones y Participación Ciudadana en la Gestión Pública”, fortaleciendo los espacios de participación existentes e incorporando a la ciudadanía en los procesos de formulación de políticas públicas propias del área de desarrollo de la Subsecretaría de Previsión Social. Además de contribuir a que todas las acciones y políticas desarrolladas, tanto a nivel institucional como aquellas dirigidas hacia la ciudadanía, incorporen la perspectiva de género, de modo tal de aportar hacia la disminución de las brechas y barreras existentes en el sistema de Seguridad Social, y la equidad entre mujeres, hombres y disidencias sexo-genéricas.</p><p>Por lo anterior, la Unidad de Participación Ciudadana y Género tiene como objetivo el potenciar la participación ciudadana en la gestión pública e incorporar el enfoque de género en las políticas públicas en materia de seguridad social, aportando a ellas de manera dinámica y en el marco de la innovación pública.</p><p class="subtitulo">Funciones:</p><ol><li>Establecer una contraparte para la coordinación permanente en cada una de las Instituciones y desarrollar un plan de trabajo para relacionarse con ellas, tanto para participación ciudadana como en género.</li><li>Implementar, de acuerdo con la ley sobre asociaciones y participación ciudadana en la gestión pública, todos los mecanismos señalados y derivados de dicha normativa.</li><li>Generar condiciones necesarias para el adecuado funcionamiento del Consejo de la Sociedad Civil para la Seguridad Social.</li><li>Implementar planes y programas, u otras acciones, que aseguren y promuevan compromisos de fortalecimiento de la sociedad civil y la participación ciudadana de los distintos estamentos, grupos, sectores, sin distinción en la gestión pública.</li><li>Coordinar y/o implementar trabajos colaborativos o proyectos inter-Unidades.</li><li>Asesorar y brindar asistencia técnica a la Subsecretaría de Previsión Social y a sus servicios relacionados, en la tarea de transversalizar la perspectiva de género en todo su quehacer institucional.</li><li>Coordinar y asesorar la incorporación de criterios de equidad de género de forma transversal en las políticas de la Institución y de los organismos relacionados de la Subsecretaría de Previsión Social, estableciendo acciones e iniciativas, realizando seguimiento y promoción de la perspectiva de género. Aportar en la formulación de las políticas, programas y acciones para la integración y desarrollo del enfoque de derechos humanos, la perspectiva de género e interseccionalidad.</li><li>Proponer acciones que permitan la generación de espacios laborales libres de todo tipo de violencia o discriminación en razón de género, desde la perspectiva de la transformación de las prácticas o conductas abusivas, ya sea entre pares o en relaciones laborales jerárquicas.</li><li>Impulsar la dictación y/o actualización de políticas, procedimientos o protocolos institucionales, como, por ejemplo, sobre maltrato, abuso laboral y sexual, entre otros.</li><li>Coordinación interinstitucional en materia de género, y actuará como contraparte técnica ante otros organismos públicos o privados, velando por la debida articulación entre estos.  Para lo anterior podrá constituir mesas de trabajo, destinadas al estudio de temas que por su especialidad o complejidad lo requieran.</li><li>Proveer asesoramiento técnico y estratégico a las distintas áreas y organismos relacionados con la Subsecretaría de Previsión Social para incorporar criterios de equidad de género en sus políticas y prácticas.</li><li>Desarrollar y promover acciones e iniciativas específicas que fomenten la equidad de género dentro de la institución y sus organismos asociados.</li></ol>'>
-          Unidad de Participación<br>Ciudadana y Género
-        </button>
+<button class="node cyan small"
+  style="left:66.25%; top:32.39%; width:7.81%; height:4.78%;"
+  data-title="Unidad de Participación Ciudadana y Género"
+  data-info='
+    <p class="persona">Katherine Quijada López</p><p class="cargo">Jefatura Unidad de Participación Ciudadana y Género</p><p>Unidad encargada de implementar los mecanismos establecidos en la ley N°20.500, de “Asociaciones y Participación Ciudadana en la Gestión Pública”, fortaleciendo los espacios de participación existentes e incorporando a la ciudadanía en los procesos de formulación de políticas públicas propias del área de desarrollo de la Subsecretaría de Previsión Social. Además de contribuir a que todas las acciones y políticas desarrolladas, tanto a nivel institucional como aquellas dirigidas hacia la ciudadanía, incorporen la perspectiva de género, de modo tal de aportar hacia la disminución de las brechas y barreras existentes en el sistema de Seguridad Social, y la equidad entre mujeres, hombres y disidencias sexo-genéricas.</p><p>Por lo anterior, la Unidad de Participación Ciudadana y Género tiene como objetivo el potenciar la participación ciudadana en la gestión pública e incorporar el enfoque de género en las políticas públicas en materia de seguridad social, aportando a ellas de manera dinámica y en el marco de la innovación pública.</p><p class="subtitulo">Funciones:</p><ol><li>Establecer una contraparte para la coordinación permanente en cada una de las Instituciones y desarrollar un plan de trabajo para relacionarse con ellas, tanto para participación ciudadana como en género.</li><li>Implementar, de acuerdo con la ley sobre asociaciones y participación ciudadana en la gestión pública, todos los mecanismos señalados y derivados de dicha normativa.</li><li>Generar condiciones necesarias para el adecuado funcionamiento del Consejo de la Sociedad Civil para la Seguridad Social.</li><li>Implementar planes y programas, u otras acciones, que aseguren y promuevan compromisos de fortalecimiento de la sociedad civil y la participación ciudadana de los distintos estamentos, grupos, sectores, sin distinción en la gestión pública.</li><li>Coordinar y/o implementar trabajos colaborativos o proyectos inter-Unidades.</li><li>Asesorar y brindar asistencia técnica a la Subsecretaría de Previsión Social y a sus servicios relacionados, en la tarea de transversalizar la perspectiva de género en todo su quehacer institucional.</li><li>Coordinar y asesorar la incorporación de criterios de equidad de género de forma transversal en las políticas de la Institución y de los organismos relacionados de la Subsecretaría de Previsión Social, estableciendo acciones e iniciativas, realizando seguimiento y promoción de la perspectiva de género. Aportar en la formulación de las políticas, programas y acciones para la integración y desarrollo del enfoque de derechos humanos, la perspectiva de género e interseccionalidad.</li><li>Proponer acciones que permitan la generación de espacios laborales libres de todo tipo de violencia o discriminación en razón de género, desde la perspectiva de la transformación de las prácticas o conductas abusivas, ya sea entre pares o en relaciones laborales jerárquicas.</li><li>Impulsar la dictación y/o actualización de políticas, procedimientos o protocolos institucionales, como, por ejemplo, sobre maltrato, abuso laboral y sexual, entre otros.</li><li>Coordinación interinstitucional en materia de género, y actuará como contraparte técnica ante otros organismos públicos o privados, velando por la debida articulación entre estos.  Para lo anterior podrá constituir mesas de trabajo, destinadas al estudio de temas que por su especialidad o complejidad lo requieran.</li><li>Proveer asesoramiento técnico y estratégico a las distintas áreas y organismos relacionados con la Subsecretaría de Previsión Social para incorporar criterios de equidad de género en sus políticas y prácticas.</li><li>Desarrollar y promover acciones e iniciativas específicas que fomenten la equidad de género dentro de la institución y sus organismos asociados.</li></ol>'>
+  Unidad de Participación<br>Ciudadana y Género
+</button>
 
-        <button class="node white main"
-          style="left:30px; top:545px; width:175px; height:78px;"
-          data-title="Dirección de Educación Previsional"
-          data-info='
-            <p class="persona">Rodrigo Pérez Fuentes</p><p class="cargo">Jefatura Dirección de Educación Previsional</p><p>Dirección encargada de liderar y coordinar los procesos de educación de los ciudadanos sobre temas previsionales, con el objetivo de generar y promover la cultura previsional en Chile dentro del marco de la Política de Educación Previsional.</p><p>Además, está a cargo de implementar y desarrollar los programas y planes que define la Política de Educación, a través de la Unidad de Educación Previsional y de generar y promover la cultura previsional, a través de la correcta administración del Fondo para la Educación Previsional (FEP), cuyo propósito es apoyar financieramente proyectos, programas, actividades, medidas de promoción y educación previsional.</p>'>
-          Dirección de<br>Educación<br>Previsional
-        </button>
+<button class="node white main"
+  style="left:1.88%; top:59.24%; width:10.94%; height:8.48%;"
+  data-title="Dirección de Educación Previsional"
+  data-info='
+    <p class="persona">Rodrigo Pérez Fuentes</p><p class="cargo">Jefatura Dirección de Educación Previsional</p><p>Dirección encargada de liderar y coordinar los procesos de educación de los ciudadanos sobre temas previsionales, con el objetivo de generar y promover la cultura previsional en Chile dentro del marco de la Política de Educación Previsional.</p><p>Además, está a cargo de implementar y desarrollar los programas y planes que define la Política de Educación, a través de la Unidad de Educación Previsional y de generar y promover la cultura previsional, a través de la correcta administración del Fondo para la Educación Previsional (FEP), cuyo propósito es apoyar financieramente proyectos, programas, actividades, medidas de promoción y educación previsional.</p>'>
+  Dirección de<br>Educación<br>Previsional
+</button>
 
-        <button class="node cyan small"
-          style="left:72px; top:690px; width:135px; height:44px;"
-          data-title="Unidad de Educación Previsional"
-          data-info='
-            <p class="persona">Elizabeth Ramírez Piña</p><p class="cargo">Jefatura Unidad de Educación Previsional</p><p>Unidad encargada de desarrollar estrategias educativas con el fin de difundir información en temas previsionales a la ciudadanía, contribuyendo al desarrollo de la cultura previsional.</p><p class="subtitulo">Funciones:</p><ol><li>Implementar y desarrollar los programas y planes de la Política Nacional de Educación Previsional.</li><li>Proponer y diseñar planes y programas de educación previsional para el intersector.</li><li>Crear instrumentos de evaluación y seguimiento de implementación de los planes y programas de educación previsional.</li><li>Velar por la correcta ejecución de los planes y programas impulsados por la Subsecretaría de Previsión Social.</li><li>Controlar, evaluar y efectuar el seguimiento de los programas ejecutados.</li><li>Elaboración de contenidos e insumos para campañas comunicacionales de educación previsional.</li><li>Definir, revisar y/o aprobar todo el material que se publique en virtud del desarrollo del Fondo de Educación Previsional.</li></ol>'>
-          Unidad de Educación<br>Previsional
-        </button>
+<button class="node cyan small"
+  style="left:4.50%; top:75%; width:8.44%; height:4.78%;"
+  data-title="Unidad de Educación Previsional"
+  data-info='
+    <p class="persona">Elizabeth Ramírez Piña</p><p class="cargo">Jefatura Unidad de Educación Previsional</p><p>Unidad encargada de desarrollar estrategias educativas con el fin de difundir información en temas previsionales a la ciudadanía, contribuyendo al desarrollo de la cultura previsional.</p><p class="subtitulo">Funciones:</p><ol><li>Implementar y desarrollar los programas y planes de la Política Nacional de Educación Previsional.</li><li>Proponer y diseñar planes y programas de educación previsional para el intersector.</li><li>Crear instrumentos de evaluación y seguimiento de implementación de los planes y programas de educación previsional.</li><li>Velar por la correcta ejecución de los planes y programas impulsados por la Subsecretaría de Previsión Social.</li><li>Controlar, evaluar y efectuar el seguimiento de los programas ejecutados.</li><li>Elaboración de contenidos e insumos para campañas comunicacionales de educación previsional.</li><li>Definir, revisar y/o aprobar todo el material que se publique en virtud del desarrollo del Fondo de Educación Previsional.</li></ol>'>
+  Unidad de Educación<br>Previsional
+</button>
 
-        <button class="node cyan small"
-          style="left:72px; top:748px; width:135px; height:44px;"
-          data-title="Unidad Fondo para la Educación Previsional"
-          data-info='
-            <p class="persona">Mauricio González Pereira</p><p class="cargo">Jefatura (S) Fondo para la Educación Previsional</p><p>Unidad encargada de generar y promover la cultura previsional, a través de la correcta administración del Fondo para la Educación Previsional, cuyo propósito es apoyar financieramente proyectos, programas, actividades, medidas de promoción, educación previsional y difusión del sistema de pensiones.</p><p class="subtitulo">Funciones:</p><ol><li>Velar por la correcta administración del Fondo para la Educación Previsional.</li><li>Crear los instrumentos de seguimiento y evaluación de la implementación de los proyectos beneficiados con recursos del Fondo para la Educación Previsional.</li><li>Supervisar las actividades de educación e información, dirigida a beneficiarios que son realizadas por los ejecutores del Fondo para la Educación Previsional.</li><li>Supervisar la correcta aplicación de los instrumentos de evaluación en las actividades que correspondan.</li><li>Llevar el registro de información de los proyectos adjudicados en el Sistema de Control y Seguimiento de proyectos del Fondo para la Educación Previsional.</li></ol>'>
-          Unidad Fondo para la<br>Educación Previsional
-        </button>
+<button class="node cyan small"
+  style="left:4.50%; top:81.30%; width:8.44%; height:4.78%;"
+  data-title="Unidad Fondo para la Educación Previsional"
+  data-info='
+    <p class="persona">Mauricio González Pereira</p><p class="cargo">Jefatura (S) Fondo para la Educación Previsional</p><p>Unidad encargada de generar y promover la cultura previsional, a través de la correcta administración del Fondo para la Educación Previsional, cuyo propósito es apoyar financieramente proyectos, programas, actividades, medidas de promoción, educación previsional y difusión del sistema de pensiones.</p><p class="subtitulo">Funciones:</p><ol><li>Velar por la correcta administración del Fondo para la Educación Previsional.</li><li>Crear los instrumentos de seguimiento y evaluación de la implementación de los proyectos beneficiados con recursos del Fondo para la Educación Previsional.</li><li>Supervisar las actividades de educación e información, dirigida a beneficiarios que son realizadas por los ejecutores del Fondo para la Educación Previsional.</li><li>Supervisar la correcta aplicación de los instrumentos de evaluación en las actividades que correspondan.</li><li>Llevar el registro de información de los proyectos adjudicados en el Sistema de Control y Seguimiento de proyectos del Fondo para la Educación Previsional.</li></ol>'>
+  Unidad Fondo para la<br>Educación Previsional
+</button>
 
-        <button class="node white main"
-          style="left:225px; top:545px; width:175px; height:78px;"
-          data-title="Dirección de Estudios Previsionales"
-          data-info='
-            <p class="persona">Ivonne Bueno Velasco</p><p class="cargo">Jefatura Dirección de Estudios Previsionales</p><p>Esta Dirección estará a cargo del análisis, evaluación, estudio y propuesta de políticas en el ámbito de Previsión Social, y de la evaluación permanente de los programas del sector. Además, será el área responsable del mantenimiento de las bases de datos previsionales para el desarrollo de análisis.</p>'>
-          Dirección de<br>Estudios Previsionales
-        </button>
+<button class="node white main"
+  style="left:14.06%; top:59.24%; width:10.94%; height:8.48%;"
+  data-title="Dirección de Estudios Previsionales"
+  data-info='
+    <p class="persona">Ivonne Bueno Velasco</p><p class="cargo">Jefatura Dirección de Estudios Previsionales</p><p>Esta Dirección estará a cargo del análisis, evaluación, estudio y propuesta de políticas en el ámbito de Previsión Social, y de la evaluación permanente de los programas del sector. Además, será el área responsable del mantenimiento de las bases de datos previsionales para el desarrollo de análisis.</p>'>
+  Dirección de<br>Estudios Previsionales
+</button>
 
-        <button class="node cyan small"
-          style="left:267px; top:690px; width:135px; height:44px;"
-          data-title="Unidad de Observatorio Previsional"
-          data-info='
-            <p class="persona">Luis Figueroa Medizabal</p><p class="cargo">Jefatura Unidad Observatorio Previsional</p><p>Unidad encargada del resguardo y procesamiento de las bases de datos administrativas (internas y externas) de la Subsecretaria de Previsión Social. Asimismo, le corresponderá contribuir a la prospección de contenidos de la reforma y políticas previsionales. Además, es la unidad encargada de la gestión y administración de la Encuesta de Protección Social (EPS) y otras fuentes de información primaria y secundaria.</p><p class="subtitulo">Funciones:</p><ol><li>Velar por el resguardo de la información de los datos administrativos tanto de la Subsecretaria de Previsión Social como de otros organismos o instituciones del Estado.</li><li>Contribuir con el desarrollo de procesos (validación y depuración) que aseguren un uso eficiente de las bases de datos dentro de la Dirección de Estudios Previsionales.</li><li>Colaborar con el proceso de limpieza, clasificación y orden de los datos disponibles.</li><li>Gestionar el proceso de licitación de la Encuesta de Protección Social y otras encuestas asociadas a la misma.</li><li>Producir estudios, e indicadores cualitativos y cuantitativos a partir de los datos longitudinales, encuestas, y otras fuentes de información cualitativas y cuantitativas de información para el análisis previsional y de seguridad social del país.</li><li>Investigar y proponer metodologías de procesamiento y análisis de información longitudinal.</li><li>Desarrollar una red de contactos y mesas con instituciones lideres en el uso de datos longitudinales para el análisis de la seguridad social.</li></ol>'>
-          Unidad de Observatorio<br>Previsional
-        </button>
+<button class="node cyan small"
+  style="left:16.69%; top:75%; width:8.44%; height:4.78%;"
+  data-title="Unidad de Observatorio Previsional"
+  data-info='
+    <p class="persona">Luis Figueroa Medizabal</p><p class="cargo">Jefatura Unidad Observatorio Previsional</p><p>Unidad encargada del resguardo y procesamiento de las bases de datos administrativas (internas y externas) de la Subsecretaria de Previsión Social. Asimismo, le corresponderá contribuir a la prospección de contenidos de la reforma y políticas previsionales. Además, es la unidad encargada de la gestión y administración de la Encuesta de Protección Social (EPS) y otras fuentes de información primaria y secundaria.</p><p class="subtitulo">Funciones:</p><ol><li>Velar por el resguardo de la información de los datos administrativos tanto de la Subsecretaria de Previsión Social como de otros organismos o instituciones del Estado.</li><li>Contribuir con el desarrollo de procesos (validación y depuración) que aseguren un uso eficiente de las bases de datos dentro de la Dirección de Estudios Previsionales.</li><li>Colaborar con el proceso de limpieza, clasificación y orden de los datos disponibles.</li><li>Gestionar el proceso de licitación de la Encuesta de Protección Social y otras encuestas asociadas a la misma.</li><li>Producir estudios, e indicadores cualitativos y cuantitativos a partir de los datos longitudinales, encuestas, y otras fuentes de información cualitativas y cuantitativas de información para el análisis previsional y de seguridad social del país.</li><li>Investigar y proponer metodologías de procesamiento y análisis de información longitudinal.</li><li>Desarrollar una red de contactos y mesas con instituciones lideres en el uso de datos longitudinales para el análisis de la seguridad social.</li></ol>'>
+  Unidad de Observatorio<br>Previsional
+</button>
 
-        <button class="node cyan small"
-          style="left:267px; top:748px; width:135px; height:44px;"
-          data-title="Unidad de Análisis de Políticas Previsionales"
-          data-info='
-            <p>Unidad encargada de elaborar insumos para la conceptualización, análisis de la reforma previsional, prospección y coordinación de políticas públicas previsionales.</p><p class="subtitulo">Funciones:</p><ol><li>Entregar insumos a las autor idades del sector que sirven para el análisis y fundamento de las propuestas de la reforma previsional y políticas públicas previsionales.</li><li>Programar y actualizar el instrumento Técnico de Focalización (ITF) que asigna los beneficios del sistema de Pensiones Solidarias y los beneficios de la Pensión Garantizada Universal.</li><li>Coordinar el trabajo interinstitucional para la elaboración de contenidos de la reforma y políticas previsionales.</li><li>Extraer información y analizar bases de datos para la elaboración de minutas y documentos de trabajo para la evaluación de propuestas de políticas públicas en el área de pensiones.</li><li>Desarrollar y aplicar modelos para pronósticos de beneficiarios y costos de diferentes programas o cambios regulatorios del sistema previsional.</li><li>Elaborar y publicar informes estadísticos mensuales y semestrales que relacionan el pilar solidario y el sistema de seguridad social.</li><li>Elaborar y publicar notas ciudadanas en materia de pensiones y/o seguridad social.</li><li>Construir y visualizar en la página Web información interactiva del Sistema de Pensiones.</li><li>Construir y visualizar en la página Web, sección género, que contenga visualizaciones interactivas y documentos de investigación.</li><li>Construir fichas estadísticas semestrales sobre el sistema de seguridad social para las autoridades del sector.</li><li>Proveer de asesoría técnica y administrativa al Consejo Consultivo Previsional y a la Comisión de Usuarios del Sistema de Pensiones.</li><li>Elaborar documentos técnicos en materia de pensiones y/o seguridad social.</li><li>Construir bases de datos consolidadas que servirán como insumo para el análisis de información en materia de pensiones.</li><li>Dar respuesta al H. Congreso Nacional y otras instituciones nacionales e internacionales de requerimiento en materia de pensiones y/o previsionales.</li></ol>'>
-          Unidad de Análisis de<br>Políticas Previsionales
-        </button>
+<button class="node cyan small"
+  style="left:16.69%; top:81.30%; width:8.44%; height:4.78%;"
+  data-title="Unidad de Análisis de Políticas Previsionales"
+  data-info='
+    <p>Unidad encargada de elaborar insumos para la conceptualización, análisis de la reforma previsional, prospección y coordinación de políticas públicas previsionales.</p><p class="subtitulo">Funciones:</p><ol><li>Entregar insumos a las autor idades del sector que sirven para el análisis y fundamento de las propuestas de la reforma previsional y políticas públicas previsionales.</li><li>Programar y actualizar el instrumento Técnico de Focalización (ITF) que asigna los beneficios del sistema de Pensiones Solidarias y los beneficios de la Pensión Garantizada Universal.</li><li>Coordinar el trabajo interinstitucional para la elaboración de contenidos de la reforma y políticas previsionales.</li><li>Extraer información y analizar bases de datos para la elaboración de minutas y documentos de trabajo para la evaluación de propuestas de políticas públicas en el área de pensiones.</li><li>Desarrollar y aplicar modelos para pronósticos de beneficiarios y costos de diferentes programas o cambios regulatorios del sistema previsional.</li><li>Elaborar y publicar informes estadísticos mensuales y semestrales que relacionan el pilar solidario y el sistema de seguridad social.</li><li>Elaborar y publicar notas ciudadanas en materia de pensiones y/o seguridad social.</li><li>Construir y visualizar en la página Web información interactiva del Sistema de Pensiones.</li><li>Construir y visualizar en la página Web, sección género, que contenga visualizaciones interactivas y documentos de investigación.</li><li>Construir fichas estadísticas semestrales sobre el sistema de seguridad social para las autoridades del sector.</li><li>Proveer de asesoría técnica y administrativa al Consejo Consultivo Previsional y a la Comisión de Usuarios del Sistema de Pensiones.</li><li>Elaborar documentos técnicos en materia de pensiones y/o seguridad social.</li><li>Construir bases de datos consolidadas que servirán como insumo para el análisis de información en materia de pensiones.</li><li>Dar respuesta al H. Congreso Nacional y otras instituciones nacionales e internacionales de requerimiento en materia de pensiones y/o previsionales.</li></ol>'>
+  Unidad de Análisis de<br>Políticas Previsionales
+</button>
 
-        <button class="node white main"
-          style="left:405px; top:545px; width:175px; height:78px;"
-          data-title="Dirección de Coordinación Institucional"
-          data-info='
-            <p class="persona">Katia Soto Cárcamo</p><p class="cargo">Jefatura Dirección de Coordinación Institucional</p><p>Dirección encargada de coordinar a los servicios relacionados de la Subsecretaría de Previsión Social, con el objetivo de asegurar la calidad de los procesos institucionales involucrados en el análisis, resolución y entrega de los beneficios otorgados a los usuarios, la continuidad operacional y el correcto funcionamiento de éstos.</p>'>
-          Dirección de<br>Coordinación<br>Institucional
-        </button>
+<button class="node white main"
+  style="left:25.31%; top:59.24%; width:10.94%; height:8.48%;"
+  data-title="Dirección de Coordinación Institucional"
+  data-info='
+    <p class="persona">Katia Soto Cárcamo</p><p class="cargo">Jefatura Dirección de Coordinación Institucional</p><p>Dirección encargada de coordinar a los servicios relacionados de la Subsecretaría de Previsión Social, con el objetivo de asegurar la calidad de los procesos institucionales involucrados en el análisis, resolución y entrega de los beneficios otorgados a los usuarios, la continuidad operacional y el correcto funcionamiento de éstos.</p>'>
+  Dirección de<br>Coordinación<br>Institucional
+</button>
 
-        <button class="node cyan small"
-          style="left:462px; top:690px; width:135px; height:44px;"
-          data-title="Unidad de Atención Ciudadana y OIRS"
-          data-info='
-            <p class="persona">Romina Ibaceta Godoy</p><p class="cargo">Jefatura Unidad de Atención Ciudadana y OIRS</p><p>Es la Unidad encargada de administrar y gestionar las respuestas, así como la derivación de las consultas, reclamos, sugerencias y felicitaciones, realizando las acciones necesarias para que la información entregada se encuentre dentro del marco legal vigente y los plazos que establece la ley, asegurando una respuesta oportuna y eficaz, garantizando el ejercicio de los derechos ciudadanos.</p><p>Además, consolida la información de los casos gestionados, realiza análisis de dicha información, y finalmente, pone en conocimiento a la autoridad de las falencias o vacíos evidenciados en materias de competencia de la Subsecretaría, en caso de ser necesario.</p><p class="subtitulo">Funciones:</p><ol><li>Recepcionar las consultas y requerimientos espontáneos de personas, agrupaciones, asociaciones que soliciten resolver una consulta, reclamo y/o sugerencia, realizados ante la Subsecretaría a través de los distintos canales de atención dispuestos para ello (presencial, telefónico, web, oficina de partes, redes sociales, etc).</li><li>Analizar y responder las consultas, reclamos, sugerencias y/o felicitaciones presentadas ante la Unidad de Atención Ciudadana de la Subsecretaría de Previsión Social, de manera oportuna y eficiente.</li><li>Gestionar y derivar las consultas, reclamos, sugerencias y felicitaciones que no correspondan a las facultades y atribuciones de la Subsecretaría, a las instituciones que les corresponda conocer la materia del caso.</li><li>Asegurar la trazabilidad de los casos en el sistema de registro NUWAC, desde el ingreso hasta la salida de la respuesta y/o derivación, según corresponda a una institución con o sin convenio NUWAC.</li><li>Apoyar, en caso de que se requiera, las distintas actividades en terreno del servicio para dar respuesta a las consultas ciudadanas que se realizan en terreno.</li><li>Establecer procedimientos y mecanismos que aseguren la calidad y pertinencia de la información, conforme a la normativa legal vigente.</li><li>Realizar análisis de la información recabada por la Unidad y relevar ante el gabinete de la Subsecretaría los casos que se estimen necesarios.</li><li>Asegurar que las funciones de la Oficina de Información, Reclamos y Sugerencias se realicen en el marco de las funciones propias de la Unidad de Atención Ciudadana.</li><li>Coordinar y/o implementar trabajos colaborativos o proyectos inter-Unidades de la Dirección.</li></ol>'>
-          Unidad de Atención<br>Ciudadana y OIRS
-        </button>
+<button class="node cyan small"
+  style="left:28.88%; top:75%; width:8.44%; height:4.78%;"
+  data-title="Unidad de Atención Ciudadana y OIRS"
+  data-info='
+    <p class="persona">Romina Ibaceta Godoy</p><p class="cargo">Jefatura Unidad de Atención Ciudadana y OIRS</p><p>Es la Unidad encargada de administrar y gestionar las respuestas, así como la derivación de las consultas, reclamos, sugerencias y felicitaciones, realizando las acciones necesarias para que la información entregada se encuentre dentro del marco legal vigente y los plazos que establece la ley, asegurando una respuesta oportuna y eficaz, garantizando el ejercicio de los derechos ciudadanos.</p><p>Además, consolida la información de los casos gestionados, realiza análisis de dicha información, y finalmente, pone en conocimiento a la autoridad de las falencias o vacíos evidenciados en materias de competencia de la Subsecretaría, en caso de ser necesario.</p><p class="subtitulo">Funciones:</p><ol><li>Recepcionar las consultas y requerimientos espontáneos de personas, agrupaciones, asociaciones que soliciten resolver una consulta, reclamo y/o sugerencia, realizados ante la Subsecretaría a través de los distintos canales de atención dispuestos para ello (presencial, telefónico, web, oficina de partes, redes sociales, etc).</li><li>Analizar y responder las consultas, reclamos, sugerencias y/o felicitaciones presentadas ante la Unidad de Atención Ciudadana de la Subsecretaría de Previsión Social, de manera oportuna y eficiente.</li><li>Gestionar y derivar las consultas, reclamos, sugerencias y felicitaciones que no correspondan a las facultades y atribuciones de la Subsecretaría, a las instituciones que les corresponda conocer la materia del caso.</li><li>Asegurar la trazabilidad de los casos en el sistema de registro NUWAC, desde el ingreso hasta la salida de la respuesta y/o derivación, según corresponda a una institución con o sin convenio NUWAC.</li><li>Apoyar, en caso de que se requiera, las distintas actividades en terreno del servicio para dar respuesta a las consultas ciudadanas que se realizan en terreno.</li><li>Establecer procedimientos y mecanismos que aseguren la calidad y pertinencia de la información, conforme a la normativa legal vigente.</li><li>Realizar análisis de la información recabada por la Unidad y relevar ante el gabinete de la Subsecretaría los casos que se estimen necesarios.</li><li>Asegurar que las funciones de la Oficina de Información, Reclamos y Sugerencias se realicen en el marco de las funciones propias de la Unidad de Atención Ciudadana.</li><li>Coordinar y/o implementar trabajos colaborativos o proyectos inter-Unidades de la Dirección.</li></ol>'>
+  Unidad de Atención<br>Ciudadana y OIRS
+</button>
 
-        <button class="node cyan small"
-          style="left:462px; top:748px; width:135px; height:44px;"
-          data-title="Unidad de Coordinación y Seguimiento Legislativo"
-          data-info='
-            <p class="persona">Katherine Cáceres Fuentes</p><p class="cargo">Jefatura Unidad de Coordinación y Seguimiento Legislativo</p><p>Unidad responsable de apoyar a la Dirección en el seguimiento, coordinación y gestión de proyectos de desarrollo con las Instituciones del sector, y de sus respectivas planificaciones estratégicas.</p><p>Además, es responsable de monitorear el desempeño de los canales de atención del sector, y coordinar con ellos actividades orientadas al intercambio de experiencias y hacia la mejora continua de sus procesos.</p><p class="subtitulo">Funciones:</p><ol><li>Establecer una contraparte para coordinación permanente en cada una de las Instituciones Previsionales y Seguridad Social, desarrollando un plan de trabajo con el objetivo de cumplir las políticas públicas de gobierno en las materias de su competencia.</li><li>Solicitar información para conocer la planificación estratégica de las Instituciones del sector, sus indicadores y sus compromisos de metas.</li><li>Analizar y conocer la experiencia de la ciudadanía en los distintos canales de atención, a fin de proponer mejoras y/o estandarización de éstos.</li><li>Revisión de evaluaciones y/o estudios de satisfacción de usuarios de los canales de atención y sus planes de mejora de las instituciones previsionales y de seguridad social.</li><li>Revisar dentro del sector previsional nacional e internacional, las experiencias exitosas en relación con usuarios en el sector de Seguridad Social, generando instancias para compartirlas y potenciarlas.</li><li>Coordinar y/o implementar trabajos colaborativos o proyectos inter-Unidades de la Dirección.</li><li>Velar por el proceso para el cumplimiento de los indicadores de PMG y CDC a cargo de la Unidad.</li></ol>'>
-          Unidad de Coordinación<br>y Seguimiento Legislativo
-        </button>
+<button class="node cyan small"
+  style="left:28.88%; top:81.30%; width:8.44%; height:4.78%;"
+  data-title="Unidad de Coordinación y Seguimiento Legislativo"
+  data-info='
+    <p class="persona">Katherine Cáceres Fuentes</p><p class="cargo">Jefatura Unidad de Coordinación y Seguimiento Legislativo</p><p>Unidad responsable de apoyar a la Dirección en el seguimiento, coordinación y gestión de proyectos de desarrollo con las Instituciones del sector, y de sus respectivas planificaciones estratégicas.</p><p>Además, es responsable de monitorear el desempeño de los canales de atención del sector, y coordinar con ellos actividades orientadas al intercambio de experiencias y hacia la mejora continua de sus procesos.</p><p class="subtitulo">Funciones:</p><ol><li>Establecer una contraparte para coordinación permanente en cada una de las Instituciones Previsionales y Seguridad Social, desarrollando un plan de trabajo con el objetivo de cumplir las políticas públicas de gobierno en las materias de su competencia.</li><li>Solicitar información para conocer la planificación estratégica de las Instituciones del sector, sus indicadores y sus compromisos de metas.</li><li>Analizar y conocer la experiencia de la ciudadanía en los distintos canales de atención, a fin de proponer mejoras y/o estandarización de éstos.</li><li>Revisión de evaluaciones y/o estudios de satisfacción de usuarios de los canales de atención y sus planes de mejora de las instituciones previsionales y de seguridad social.</li><li>Revisar dentro del sector previsional nacional e internacional, las experiencias exitosas en relación con usuarios en el sector de Seguridad Social, generando instancias para compartirlas y potenciarlas.</li><li>Coordinar y/o implementar trabajos colaborativos o proyectos inter-Unidades de la Dirección.</li><li>Velar por el proceso para el cumplimiento de los indicadores de PMG y CDC a cargo de la Unidad.</li></ol>'>
+  Unidad de Coordinación<br>y Seguimiento Legislativo
+</button>
 
-        <button class="node white main"
-          style="left:590px; top:545px; width:190px; height:78px;"
-          data-title="División de Asesoría Legislativa y Seguridad Laboral"
-          data-info='
-            <p class="persona">Pedro Contador Abraham</p><p class="cargo">Jefatura División de Asesoría Legislativa y Seguridad Laboral</p><p>División encargada de asesorar al Subsecretario/a en la preparación y tramitación en el Congreso Nacional de proyectos de ley en el ámbito de la Previsión Social y de Seguridad y Salud en el Trabajo, así como en la negociación y aplicación de los convenios internacionales que digan relación con dichas materias.</p><p>Además, se encarga de proponer e implementar las políticas públicas y el diálogo social en los ámbitos de su competencia.</p>'>
-          División de Asesoría<br>Legislativa y<br>Seguridad Laboral
-        </button>
+<button class="node white main"
+  style="left:36.88%; top:59.24%; width:11.88%; height:8.48%;"
+  data-title="División de Asesoría Legislativa y Seguridad Laboral"
+  data-info='
+    <p class="persona">Pedro Contador Abraham</p><p class="cargo">Jefatura División de Asesoría Legislativa y Seguridad Laboral</p><p>División encargada de asesorar al Subsecretario/a en la preparación y tramitación en el Congreso Nacional de proyectos de ley en el ámbito de la Previsión Social y de Seguridad y Salud en el Trabajo, así como en la negociación y aplicación de los convenios internacionales que digan relación con dichas materias.</p><p>Además, se encarga de proponer e implementar las políticas públicas y el diálogo social en los ámbitos de su competencia.</p>'>
+  División de Asesoría<br>Legislativa y<br>Seguridad Laboral
+</button>
 
-        <button class="node cyan small"
-          style="left:642px; top:684px; width:135px; height:48px;"
-          data-title="Unidad de Asesoría Legislativa y Convenios Internacionales"
-          data-info='
-            <p class="persona">Marcela Pinto Osorio</p><p class="cargo">Jefatura Unidad Asesoría Legislativa y Convenios Internacionales</p> <p>Unidad encargada de asesorar y gestionar los proyectos de ley en el ámbito de la Previsión Social, Seguridad y Salud en el Trabajo y los convenios internacionales que digan relación con dichas materias.</p><p class="subtitulo">Funciones:</p><ol><li>Asesorar al Subsecretario/a en la preparación y tramitación en el Congreso Nacional de proyectos de ley en el ámbito de la Previsión Social y de Seguridad y Salud en el Trabajo.</li><li>Diseñar y elaborar reglamentos y otras normas jurídicas que sean necesarias para la plena vigencia y ejecución de normas legales previsionales y de la seguridad y salud en el trabajo nacionales e internacionales.</li><li>Participar en las instancias de diálogo social que promueva la Subsecretaría.</li><li>Elaborar informes jurídicos y técnicos en materias de relaciones internacionales y otras materias vinculadas a los regímenes previsionales de competencia de esta Subsecretaría.</li><li>Elaborar informes legislativos.</li><li>Participar en la tramitación de los tratados y/o convenios internacionales, en materia previsional y de seguridad y salud laboral y en su aplicación, relacionándose con los organismos del sector.</li><li>Participar en las relaciones internacionales en materias previsionales y de seguridad laboral, con terceros Estados y en organismos internacionales relativos al tema.</li><li>Representar a la autoridad competente en la aplicación de los convenios de seguridad social suscritos por Chile y evaluar su aplicación.</li><li>Participar en la implementación de las actividades relacionadas con el acceso a los derechos de la seguridad social de los chilenos en el exterior como de los trabajadores migrantes en Chile.</li></ol>'>
-          Unidad de Asesoría<br>Legislativa y Convenios<br>Internacionales
-        </button>
+<button class="node cyan small"
+  style="left:40.13%; top:74.35%; width:8.44%; height:5.22%;"
+  data-title="Unidad de Asesoría Legislativa y Convenios Internacionales"
+  data-info='
+    <p class="persona">Marcela Pinto Osorio</p><p class="cargo">Jefatura Unidad Asesoría Legislativa y Convenios Internacionales</p> <p>Unidad encargada de asesorar y gestionar los proyectos de ley en el ámbito de la Previsión Social, Seguridad y Salud en el Trabajo y los convenios internacionales que digan relación con dichas materias.</p><p class="subtitulo">Funciones:</p><ol><li>Asesorar al Subsecretario/a en la preparación y tramitación en el Congreso Nacional de proyectos de ley en el ámbito de la Previsión Social y de Seguridad y Salud en el Trabajo.</li><li>Diseñar y elaborar reglamentos y otras normas jurídicas que sean necesarias para la plena vigencia y ejecución de normas legales previsionales y de la seguridad y salud en el trabajo nacionales e internacionales.</li><li>Participar en las instancias de diálogo social que promueva la Subsecretaría.</li><li>Elaborar informes jurídicos y técnicos en materias de relaciones internacionales y otras materias vinculadas a los regímenes previsionales de competencia de esta Subsecretaría.</li><li>Elaborar informes legislativos.</li><li>Participar en la tramitación de los tratados y/o convenios internacionales, en materia previsional y de seguridad y salud laboral y en su aplicación, relacionándose con los organismos del sector.</li><li>Participar en las relaciones internacionales en materias previsionales y de seguridad laboral, con terceros Estados y en organismos internacionales relativos al tema.</li><li>Representar a la autoridad competente en la aplicación de los convenios de seguridad social suscritos por Chile y evaluar su aplicación.</li><li>Participar en la implementación de las actividades relacionadas con el acceso a los derechos de la seguridad social de los chilenos en el exterior como de los trabajadores migrantes en Chile.</li></ol>'>
+  Unidad de Asesoría<br>Legislativa y Convenios<br>Internacionales
+</button>
 
-        <button class="node cyan small"
-          style="left:642px; top:743px; width:135px; height:44px;"
-          data-title="Unidad de Seguridad y Salud Laboral"
-          data-info='
-           <p class="persona">Enrique Pérez Mendoza</p><p class="cargo">Jefatura Unidad de Seguridad y Salud Laboral</p> <p>Unidad encargada de diseñar, implementar y gestionar las políticas y normativas de la Seguridad y Salud en el trabajo que deba conocer la Subsecretaría en el ámbito de sus competencias.</p><p class="subtitulo">Funciones:</p><ol><li>Proponer y coordinar las actividades de la Subsecretaría y de los servicios del sector, en el ámbito de la Seguridad y Salud en el trabajo y evaluar su implementación.</li><li>Evaluar el funcionamiento del Sistema Nacional de Seguridad y Salud en el trabajo y proponer el mejoramiento de sus normativas e instituciones.</li><li>Coordinar la gestión de las actividades e implementación de la Política y Programa Nacional de la Seguridad y Salud en el Trabajo.</li><li>Proponer, diseñar, fomentar, implementar políticas de dialogo social en el ámbito de sus competencias.</li><li>Realizar labores que se le encomienden relacionadas con el Comité de Ministros de Seguridad y Salud en el Trabajo y con el Consejo Consultivo de Seguridad y Salud en el Trabajo, incluyendo la labor de Secretaría Ejecutiva.</li><li>Realización de estudios que permitan implementar las políticas públicas en seguridad y salud en el trabajo, facilitar la prevención de los riesgos laborales y proponer los ajustes normativos que correspondan.</li><li>Ejecutar labores de difusión y promoción de las políticas y normativas de seguridad y salud en el trabajo.</li><li>Evacuar informes técnicos en el área de su especialidad.</li></ol>'>
-          Unidad de Seguridad<br>y Salud Laboral
-        </button>
+<button class="node cyan small"
+  style="left:40.13%; top:80.76%; width:8.44%; height:4.78%;"
+  data-title="Unidad de Seguridad y Salud Laboral"
+  data-info='
+   <p class="persona">Enrique Pérez Mendoza</p><p class="cargo">Jefatura Unidad de Seguridad y Salud Laboral</p> <p>Unidad encargada de diseñar, implementar y gestionar las políticas y normativas de la Seguridad y Salud en el trabajo que deba conocer la Subsecretaría en el ámbito de sus competencias.</p><p class="subtitulo">Funciones:</p><ol><li>Proponer y coordinar las actividades de la Subsecretaría y de los servicios del sector, en el ámbito de la Seguridad y Salud en el trabajo y evaluar su implementación.</li><li>Evaluar el funcionamiento del Sistema Nacional de Seguridad y Salud en el trabajo y proponer el mejoramiento de sus normativas e instituciones.</li><li>Coordinar la gestión de las actividades e implementación de la Política y Programa Nacional de la Seguridad y Salud en el Trabajo.</li><li>Proponer, diseñar, fomentar, implementar políticas de dialogo social en el ámbito de sus competencias.</li><li>Realizar labores que se le encomienden relacionadas con el Comité de Ministros de Seguridad y Salud en el Trabajo y con el Consejo Consultivo de Seguridad y Salud en el Trabajo, incluyendo la labor de Secretaría Ejecutiva.</li><li>Realización de estudios que permitan implementar las políticas públicas en seguridad y salud en el trabajo, facilitar la prevención de los riesgos laborales y proponer los ajustes normativos que correspondan.</li><li>Ejecutar labores de difusión y promoción de las políticas y normativas de seguridad y salud en el trabajo.</li><li>Evacuar informes técnicos en el área de su especialidad.</li></ol>'>
+  Unidad de Seguridad<br>y Salud Laboral
+</button>
 
-        <button class="node white main"
-          style="left:1000px; top:545px; width:180px; height:76px;"
-          data-title="Dirección de Administración y Finanzas"
-          data-info='
-            <p class="persona">Lidia Lueiza Baeza</p><p class="cargo">Jefatura Dirección de Administración y Finanzas</p><p>Dirección encargada de administrar, gestionar y supervisar los recursos financieros, presupuestarios y materiales de la Subsecretaría de Previsión Social, procurando su correcta ejecución y dando conformidad a la normativa vigente, velando por el cumplimiento de los objetivos institucionales.</p><p>Asimismo, le corresponderá la coordinación en materia de planificación presupuestaria y el seguimiento a su ejecución, así como informes de auditorías e indicadores de gestión, entre otros, a los servicios públicos del sector Previsión Social.</p>'>
-          Dirección de<br>Administración y<br>Finanzas
-        </button>
+<button class="node white main"
+  style="left:62.5%; top:59.24%; width:11.25%; height:8.26%;"
+  data-title="Dirección de Administración y Finanzas"
+  data-info='
+    <p class="persona">Lidia Lueiza Baeza</p><p class="cargo">Jefatura Dirección de Administración y Finanzas</p><p>Dirección encargada de administrar, gestionar y supervisar los recursos financieros, presupuestarios y materiales de la Subsecretaría de Previsión Social, procurando su correcta ejecución y dando conformidad a la normativa vigente, velando por el cumplimiento de los objetivos institucionales.</p><p>Asimismo, le corresponderá la coordinación en materia de planificación presupuestaria y el seguimiento a su ejecución, así como informes de auditorías e indicadores de gestión, entre otros, a los servicios públicos del sector Previsión Social.</p>'>
+  Dirección de<br>Administración y<br>Finanzas
+</button>
 
-        <button class="node cyan small"
-          style="left:790px; top:690px; width:135px; height:52px;"
-          data-title="Unidad de Presupuesto, Finanzas y Control Sectorial"
-          data-info='
-            <p class="persona">Dan Muñoz Silva</p><p class="cargo">Jefatura Unidad de Presupuesto, Finanzas y Control Sectorial</p><p>Unidad encargada de coordinar, planificar, gestionar y controlar el presupuesto de la Subsecretaría de Previsión Social y monitorear y controlar la ejecución del presupuesto de los servicios dependientes y relacionados, proponiendo los ajustes necesarios que permitan optimizar el uso de los recursos públicos de acuerdo con la normativa vigente, manteniendo el equilibrio financiero con un riesgo controlado, utilizando para ellos, herramientas de control y gestión.</p><p class="subtitulo">Funciones:</p><ol><li>Coordinar periódicamente el comportamiento de la Ejecución Presupuestaria de la Subsecretaría y sus Servicios dependientes.</li><li>Coordinar y consolidar formulación presupuestaria de la Subsecretaría y los servicios dependientes.</li><li>Coordinar y realizar seguimiento de glosas presupuestarias de la Subsecretaría y los servicios dependientes.</li><li>Elaborar, controlar y gestionar el presupuesto de la institución, preservando máxima eficiencia y transparencia, en la operación y análisis de los procesos.</li><li>Apoyar, a la Jefatura de Adquisiciones y Servicios Generales, la elaboración del Plan Anual de Compras Institucional (PAC) que respalda y justifica el gasto público en iniciativas concretas, considerando en la estimación: tiempo, lugar, cantidad, precio, modalidad de compra, y la estructura presupuestaria vigente, entre otros.</li><li>Liderar reuniones con los responsables de los centros de costos que ejecutan presupuestos, para garantizar la correcta, eficiente y oportuna ejecución presupuestaria.</li><li>Consolidar la información del Presupuesto Institucional en un formato agregado, considerando la distribución vigente, disponibilidades, ejecución, Plan de Compras, centros de costos, programación de caja, entre otros.</li><li>Responder a los requerimientos de información presupuestaria del Ministerio de Hacienda, de la Dirección de Presupuestos, y de otros organismos que lo requieren.</li><li>Monitorear, analizar y preparar la información de la ejecución del presupuesto asociado al PAC vigente cuando sea requerido.</li><li>Solicitar y consolidar la información a los diferentes centros de costos para preparar el Presupuesto Exploratorio del año siguiente, justificando en las instancias pertinentes su contenido y estructura.</li><li>Coordinar el registro en sistema de gestión financiera los requerimientos presupuestarios, incorporando ajustes y modificaciones cuando proceda.</li><li>Controlar la ejecución de los contratos vigentes de la Subsecretaría, efectuando seguimiento a los hitos y/o productos.</li><li>Desempeñar otras funciones y/o coordinaciones encomendadas por la jefatura, dentro de su ámbito de responsabilidad.</li><li>Análisis y revisión de la documentación de respaldo para el pago de todo lo que provenga de un contrato y/o acuerdo complementario.</li></ol>'>
-          Unidad de Presupuesto,<br>Finanzas y Control<br>Sectorial
-        </button>
+<button class="node cyan small"
+  style="left:49.38%; top:75%; width:8.44%; height:5.65%;"
+  data-title="Unidad de Presupuesto, Finanzas y Control Sectorial"
+  data-info='
+    <p class="persona">Dan Muñoz Silva</p><p class="cargo">Jefatura Unidad de Presupuesto, Finanzas y Control Sectorial</p><p>Unidad encargada de coordinar, planificar, gestionar y controlar el presupuesto de la Subsecretaría de Previsión Social y monitorear y controlar la ejecución del presupuesto de los servicios dependientes y relacionados, proponiendo los ajustes necesarios que permitan optimizar el uso de los recursos públicos de acuerdo con la normativa vigente, manteniendo el equilibrio financiero con un riesgo controlado, utilizando para ellos, herramientas de control y gestión.</p><p class="subtitulo">Funciones:</p><ol><li>Coordinar periódicamente el comportamiento de la Ejecución Presupuestaria de la Subsecretaría y sus Servicios dependientes.</li><li>Coordinar y consolidar formulación presupuestaria de la Subsecretaría y los servicios dependientes.</li><li>Coordinar y realizar seguimiento de glosas presupuestarias de la Subsecretaría y los servicios dependientes.</li><li>Elaborar, controlar y gestionar el presupuesto de la institución, preservando máxima eficiencia y transparencia, en la operación y análisis de los procesos.</li><li>Apoyar, a la Jefatura de Adquisiciones y Servicios Generales, la elaboración del Plan Anual de Compras Institucional (PAC) que respalda y justifica el gasto público en iniciativas concretas, considerando en la estimación: tiempo, lugar, cantidad, precio, modalidad de compra, y la estructura presupuestaria vigente, entre otros.</li><li>Liderar reuniones con los responsables de los centros de costos que ejecutan presupuestos, para garantizar la correcta, eficiente y oportuna ejecución presupuestaria.</li><li>Consolidar la información del Presupuesto Institucional en un formato agregado, considerando la distribución vigente, disponibilidades, ejecución, Plan de Compras, centros de costos, programación de caja, entre otros.</li><li>Responder a los requerimientos de información presupuestaria del Ministerio de Hacienda, de la Dirección de Presupuestos, y de otros organismos que lo requieren.</li><li>Monitorear, analizar y preparar la información de la ejecución del presupuesto asociado al PAC vigente cuando sea requerido.</li><li>Solicitar y consolidar la información a los diferentes centros de costos para preparar el Presupuesto Exploratorio del año siguiente, justificando en las instancias pertinentes su contenido y estructura.</li><li>Coordinar el registro en sistema de gestión financiera los requerimientos presupuestarios, incorporando ajustes y modificaciones cuando proceda.</li><li>Controlar la ejecución de los contratos vigentes de la Subsecretaría, efectuando seguimiento a los hitos y/o productos.</li><li>Desempeñar otras funciones y/o coordinaciones encomendadas por la jefatura, dentro de su ámbito de responsabilidad.</li><li>Análisis y revisión de la documentación de respaldo para el pago de todo lo que provenga de un contrato y/o acuerdo complementario.</li></ol>'>
+  Unidad de Presupuesto,<br>Finanzas y Control<br>Sectorial
+</button>
 
-        <button class="node cyan small"
-          style="left:960px; top:690px; width:135px; height:52px;"
-          data-title="Unidad de Gestión y Desarrollo de Personas"
-          data-info='
-            <p class="persona">Taty Orellana</p><p class="cargo">Jefatura Unidad de Gestión y Desarrollo de Personas</p><p>Unidad encargada de la generación e implementación de políticas de desarrollo organizacional de la Subsecretaría, así como la administración y el mejoramiento de los subsistemas de gestión de personas, tales como: evaluación de desempeño, capacitación y formación, remuneraciones y administración del personal.</p><p class="subtitulo">Funciones:</p><ol><li>Planificar y gestionar estratégicamente los distintos subsistemas de gestión de personas (reclutamiento y selección, inducción, capacitación y formación, gestión del desempeño, administración de personal, calidad de vida y bienestar, egreso) contribuyendo al adecuado uso de los recursos disponibles, de acuerdo a los lineamientos institucionales definidos.</li><li>Proponer y asesorar a la jefatura de dirección respecto a políticas, prácticas, procedimientos e indicadores de gestión de personas.</li><li>Proponer e implementar proyectos de desarrollo organizacional, orientados a mejorar el rendimiento del personal y a impulsar procesos de cambio organizacional, que contribuyan al cumplimiento de los objetivos de la Subsecretaría y la mejora continua de ambientes laborales.</li><li>Administrar el ciclo de vida laboral del personal de la Subsecretaría, asegurando el cumplimiento de actos administrativos y procedimentales de la administración pública.</li><li>Integrar y actuar como contraparte técnica en instancias bipartitas del servicio (capacitación, higiene y seguridad).</li><li>Garantizar el cumplimiento con calidad y oportunidad de los procesos, actos administrativos y reportes de gestión requeridos por la Dirección de Presupuestos (DIPRES), Subsecretaria de Hacienda, Contraloría General de la República u otro organismo relacionado.</li><li>Proponer, implementar y difundir al interior de la Institución las políticas de inclusión relevadas por la administración central.</li><li>Coordinación, en materias de Gestión y Desarrollo de Personas de los servicios relacionados.</li></ol>'>
-          Unidad de Gestión y<br>Desarrollo de Personas
-        </button>
+<button class="node cyan small"
+  style="left:60%; top:75%; width:8.44%; height:5.65%;"
+  data-title="Unidad de Gestión y Desarrollo de Personas"
+  data-info='
+    <p class="persona">Taty Orellana</p><p class="cargo">Jefatura Unidad de Gestión y Desarrollo de Personas</p><p>Unidad encargada de la generación e implementación de políticas de desarrollo organizacional de la Subsecretaría, así como la administración y el mejoramiento de los subsistemas de gestión de personas, tales como: evaluación de desempeño, capacitación y formación, remuneraciones y administración del personal.</p><p class="subtitulo">Funciones:</p><ol><li>Planificar y gestionar estratégicamente los distintos subsistemas de gestión de personas (reclutamiento y selección, inducción, capacitación y formación, gestión del desempeño, administración de personal, calidad de vida y bienestar, egreso) contribuyendo al adecuado uso de los recursos disponibles, de acuerdo a los lineamientos institucionales definidos.</li><li>Proponer y asesorar a la jefatura de dirección respecto a políticas, prácticas, procedimientos e indicadores de gestión de personas.</li><li>Proponer e implementar proyectos de desarrollo organizacional, orientados a mejorar el rendimiento del personal y a impulsar procesos de cambio organizacional, que contribuyan al cumplimiento de los objetivos de la Subsecretaría y la mejora continua de ambientes laborales.</li><li>Administrar el ciclo de vida laboral del personal de la Subsecretaría, asegurando el cumplimiento de actos administrativos y procedimentales de la administración pública.</li><li>Integrar y actuar como contraparte técnica en instancias bipartitas del servicio (capacitación, higiene y seguridad).</li><li>Garantizar el cumplimiento con calidad y oportunidad de los procesos, actos administrativos y reportes de gestión requeridos por la Dirección de Presupuestos (DIPRES), Subsecretaria de Hacienda, Contraloría General de la República u otro organismo relacionado.</li><li>Proponer, implementar y difundir al interior de la Institución las políticas de inclusión relevadas por la administración central.</li><li>Coordinación, en materias de Gestión y Desarrollo de Personas de los servicios relacionados.</li></ol>'>
+  Unidad de Gestión y<br>Desarrollo de Personas
+</button>
 
-        <button class="node cyan small"
-          style="left:1100px; top:690px; width:135px; height:52px;"
-          data-title="Unidad de Adquisiciones y Servicios Generales"
-          data-info='
-            <p class="persona">Carla Miranda Soto</p><p class="cargo">Jefatura Unidad de Adquisiciones y Servicios Generales</p><p>Unidad encargada de la gestión de abastecimiento, servicios generales y control de activos e inventario de la Subsecretaria, dando cumplimiento a la normativa vigente y velando por el uso y control eficiente de los recursos institucionales.</p><p class="subtitulo">Funciones:</p><ol><li>Liderar la elaboración del Plan Anual de Compras Institucional (PAC) que respalda y justifica el gasto público en iniciativas concretas, considerando en la estimación: tiempo, lugar, cantidad, precio, modalidad de compra, y la estructura presupuestaria vigente, entre otros, y hacer seguimiento a su ejecución.</li><li>Apoyar a las contrapartes técnicas en la elaboración de los requerimientos y supervisar la correcta ejecución de los procesos de compras y contrataciones de acuerdo a la ley N°19.886, a su reglamento y normativa vigente y manual interno de la Subsecretaría de Previsión Social.</li><li>Administrar la plataforma de MercadoPúblico para la ejecución de las compras institucionales.</li><li>Administrar y gestionar los servicios generales necesarios para el correcto funcionamiento de la infraestructura institucional y los servicios de apoyo asociados, en coordinación con el administrador del edificio ministerial, en lo que corresponda.</li><li>Administrar, controlar, registrar y tomar las medidas de resguardo de los bienes institucionales.</li><li>Proveer los bienes y servicios que requieran las distintas áreas, de acuerdo con el plan anual de compras.</li><li>Supervisar y gestionar las prestaciones de servicios asociados a contratos donde es contraparte técnica.</li><li>Supervisar la correcta realización de toma de inventario.</li><li>Supervisar y controlar el correcto y eficiente stock de bodega, entrega de suministros y materiales a los/as funcionarios/as.</li><li>Gestionar la contratación y coordinación de servicios menores (mantenciones, reparaciones y servicios varios).</li><li>Supervisar el Control de activo fijo, mediante el ingreso de altas y bajas de bienes en el sistema de apoyo existente.</li><li>Supervisión del trabajo de proveedores, para los distintos servicios contratados que digan relación con los servicios generales.</li><li>Control y supervisión del estado de la documentación oficial de la subsecretaría tanto aquella que se resguarda en bodegas internas como externas. Así como realizar anualmente las coordinaciones necesarias para el envío de información a DIBAM.</li><li>Gestionar la formalización de los contratos provenientes de procesos de compras hasta el envío de la Orden de Compra, donde posteriormente comienza la prestación del servicio y queda a cargo de las distintas contrapartes técnicas.</li><li>Mantener el control y correcto funcionamiento de la Oficina de Partes de la Subsecretaría de Previsión Social.</li></ol>'>
-          Unidad de Adquisiciones<br>y Servicios Generales
-        </button>
+<button class="node cyan small"
+  style="left:68.75%; top:75%; width:8.44%; height:5.65%;"
+  data-title="Unidad de Adquisiciones y Servicios Generales"
+  data-info='
+    <p class="persona">Carla Miranda Soto</p><p class="cargo">Jefatura Unidad de Adquisiciones y Servicios Generales</p><p>Unidad encargada de la gestión de abastecimiento, servicios generales y control de activos e inventario de la Subsecretaria, dando cumplimiento a la normativa vigente y velando por el uso y control eficiente de los recursos institucionales.</p><p class="subtitulo">Funciones:</p><ol><li>Liderar la elaboración del Plan Anual de Compras Institucional (PAC) que respalda y justifica el gasto público en iniciativas concretas, considerando en la estimación: tiempo, lugar, cantidad, precio, modalidad de compra, y la estructura presupuestaria vigente, entre otros, y hacer seguimiento a su ejecución.</li><li>Apoyar a las contrapartes técnicas en la elaboración de los requerimientos y supervisar la correcta ejecución de los procesos de compras y contrataciones de acuerdo a la ley N°19.886, a su reglamento y normativa vigente y manual interno de la Subsecretaría de Previsión Social.</li><li>Administrar la plataforma de MercadoPúblico para la ejecución de las compras institucionales.</li><li>Administrar y gestionar los servicios generales necesarios para el correcto funcionamiento de la infraestructura institucional y los servicios de apoyo asociados, en coordinación con el administrador del edificio ministerial, en lo que corresponda.</li><li>Administrar, controlar, registrar y tomar las medidas de resguardo de los bienes institucionales.</li><li>Proveer los bienes y servicios que requieran las distintas áreas, de acuerdo con el plan anual de compras.</li><li>Supervisar y gestionar las prestaciones de servicios asociados a contratos donde es contraparte técnica.</li><li>Supervisar la correcta realización de toma de inventario.</li><li>Supervisar y controlar el correcto y eficiente stock de bodega, entrega de suministros y materiales a los/as funcionarios/as.</li><li>Gestionar la contratación y coordinación de servicios menores (mantenciones, reparaciones y servicios varios).</li><li>Supervisar el Control de activo fijo, mediante el ingreso de altas y bajas de bienes en el sistema de apoyo existente.</li><li>Supervisión del trabajo de proveedores, para los distintos servicios contratados que digan relación con los servicios generales.</li><li>Control y supervisión del estado de la documentación oficial de la subsecretaría tanto aquella que se resguarda en bodegas internas como externas. Así como realizar anualmente las coordinaciones necesarias para el envío de información a DIBAM.</li><li>Gestionar la formalización de los contratos provenientes de procesos de compras hasta el envío de la Orden de Compra, donde posteriormente comienza la prestación del servicio y queda a cargo de las distintas contrapartes técnicas.</li><li>Mantener el control y correcto funcionamiento de la Oficina de Partes de la Subsecretaría de Previsión Social.</li></ol>'>
+  Unidad de Adquisiciones<br>y Servicios Generales
+</button>
 
-        <button class="node cyan small"
-          style="left:1240px; top:690px; width:135px; height:52px;"
-          data-title="Unidad de Control de Gestión"
-          data-info='
-            <p class="persona">Rigoberto Millacura Herrera</p><p class="cargo">Jefatura Unidad de Control de Gestión</p><p>Unidad encargada de dirigir los procesos y sistemas de control de gestión de la Subsecretaría de Previsión Social con el objetivo de dar cumplimiento a los compromisos establecidos por el servicio.</p><p class="subtitulo">Funciones:</p><ol><li>Participar del proceso de formulación y diseño de las Definiciones Estratégicas (formulario A1) del Servicio, en el marco del proceso de formulación presupuestaria del año t+1.</li><li>Encabezar el proceso de levantamiento, seguimiento y evaluación de los indicadores de Desempeño (H) de la Institución, asociados a los objetivos estratégicos y presupuesto solicitado.</li><li>Coordinar la formulación, seguimiento, monitoreo y evaluación de los indicadores y sistemas que componen el Programa de Mejoramiento de la Gestión (PMG), en el marco de la aplicación de la ley N°19.553. de Modernización del Estado.</li><li>Coordinar la formulación, seguimiento, monitoreo y evaluación de los indicadores comprometidos por los equipos de trabajo que conforman el Convenio de Desempeño Colectivo (CDC), en el marco de la aplicación de la ley N°19.553, de Modernización del Estado.</li><li>Elaboración del informe de monitoreo del Sistema de Información de la Gestión (SIG).</li><li>Coordinar y redactar el Balance de Gestión Integral del Servicio.</li><li>Coordinar el proceso de elaboración, actualización, seguimiento y evaluación de la Matriz de Riesgo Institucional de manera anual.</li><li>Coordinar el proceso mensual de actualización del portal de Transparencia Activa, asegurar su correcta publicación y en plazo. Además, realizar los ejercicios de auto fiscalización una vez al año y ser contraparte como enlace ante el Consejo de Transparencia.</li><li>Coordinar y gestionar la publicación de la información correspondiente a Transparencia Proactiva.</li><li>Apoyar el proceso coordinación para la elaboración de la Cuenta Pública Participativa.</li><li>Participar como contraparte en el proceso de formulación de los Convenios de Alta Dirección Pública de Primer nivel Jerárquico.</li><li>Administración de la ley N°20.285 en materia de Transparencia Activa y como enlace ante el Consejo de Transparencia.</li></ol>'>
-          Unidad de Control<br>de Gestión
-        </button>
+<button class="node cyan small"
+  style="left:77.5%; top:75%; width:8.44%; height:5.65%;"
+  data-title="Unidad de Control de Gestión"
+  data-info='
+    <p class="persona">Rigoberto Millacura Herrera</p><p class="cargo">Jefatura Unidad de Control de Gestión</p><p>Unidad encargada de dirigir los procesos y sistemas de control de gestión de la Subsecretaría de Previsión Social con el objetivo de dar cumplimiento a los compromisos establecidos por el servicio.</p><p class="subtitulo">Funciones:</p><ol><li>Participar del proceso de formulación y diseño de las Definiciones Estratégicas (formulario A1) del Servicio, en el marco del proceso de formulación presupuestaria del año t+1.</li><li>Encabezar el proceso de levantamiento, seguimiento y evaluación de los indicadores de Desempeño (H) de la Institución, asociados a los objetivos estratégicos y presupuesto solicitado.</li><li>Coordinar la formulación, seguimiento, monitoreo y evaluación de los indicadores y sistemas que componen el Programa de Mejoramiento de la Gestión (PMG), en el marco de la aplicación de la ley N°19.553. de Modernización del Estado.</li><li>Coordinar la formulación, seguimiento, monitoreo y evaluación de los indicadores comprometidos por los equipos de trabajo que conforman el Convenio de Desempeño Colectivo (CDC), en el marco de la aplicación de la ley N°19.553, de Modernización del Estado.</li><li>Elaboración del informe de monitoreo del Sistema de Información de la Gestión (SIG).</li><li>Coordinar y redactar el Balance de Gestión Integral del Servicio.</li><li>Coordinar el proceso de elaboración, actualización, seguimiento y evaluación de la Matriz de Riesgo Institucional de manera anual.</li><li>Coordinar el proceso mensual de actualización del portal de Transparencia Activa, asegurar su correcta publicación y en plazo. Además, realizar los ejercicios de auto fiscalización una vez al año y ser contraparte como enlace ante el Consejo de Transparencia.</li><li>Coordinar y gestionar la publicación de la información correspondiente a Transparencia Proactiva.</li><li>Apoyar el proceso coordinación para la elaboración de la Cuenta Pública Participativa.</li><li>Participar como contraparte en el proceso de formulación de los Convenios de Alta Dirección Pública de Primer nivel Jerárquico.</li><li>Administración de la ley N°20.285 en materia de Transparencia Activa y como enlace ante el Consejo de Transparencia.</li></ol>'>
+  Unidad de Control<br>de Gestión
+</button>
 
-        <button class="node cyan small"
-          style="left:830px; top:810px; width:120px; height:46px;"
-          data-title="Subunidad de Gestión Financiera"
-          data-info='
-            <p class="persona">Freddy Gómez Salgado</p><p class="cargo">Jefatura Subunidad de Gestión Financiera</p><p>Subunidad dependiente de la Unidad de Presupuesto, Finanzas y Control Sectorial, encargada de gestionar la ejecución del registro, control y verificación de la contabilidad de la Subsecretaría, con el objeto de generar información confiable y eficiente que sirva para la toma de decisiones del Servicio, velando por el desarrollo de los procedimientos contables y financieros conforme la normativa vigente, aplicando en ello criterios según la Contabilidad Gubernamental, NIC-SP, de los Servicios relacionados con la materia.</p><p class="subtitulo">Funciones:</p><ol><li>Registrar la información financiera contable de manera oportuna y eficiente, de acuerdo a la normativa vigente, con la finalidad de proveer la información necesaria para la toma de decisiones.</li><li>Realizar el proceso de cálculo de las remuneraciones, jubilaciones e indemnizaciones de funcionarios/as de la Subsecretaría de Previsión Social.</li><li>Preparación de Balances y Estados Financieros de la Subsecretaría de Previsión Social y otros informes solicitados por los organismos de control y jefatura directa.</li><li>Efectuar revisión selectiva de materias propias del área de las rendiciones de fondos asignados a terceros vía proyectos provenientes del Fondo de Educación Previsional, así como también de los/as funcionarios/as que cuenten con recursos asignados.</li><li>Revisiones y análisis de cuentas por pagar mensuales y cuentas por cobrar.</li><li>Revisar diariamente que el registro de facturas se encuentre en Sistema de Gestión de Documentos Tributarios Electrónicos (SGDTE).</li><li>Análisis y revisión de la documentación de respaldo para pago, exceptuando los que provengan de un contrato y/o acuerdo complementario.</li><li>Efectuar control aleatorio a la toma de inventario realizada por la Unidad de Adquisiciones y Servicios Generales.</li><li>Efectuar cuadratura periódica entre el sistema contable y el sistema de inventario.</li><li>Cálculo y registro para la recuperación del Subsidio de Incapacidad Laboral.</li></ol>'>
-          Subunidad de<br>Gestión Financiera
-        </button>
+<button class="node cyan small"
+  style="left:51.88%; top:88.04%; width:7.50%; height:5%;"
+  data-title="Subunidad de Gestión Financiera"
+  data-info='
+    <p class="persona">Freddy Gómez Salgado</p><p class="cargo">Jefatura Subunidad de Gestión Financiera</p><p>Subunidad dependiente de la Unidad de Presupuesto, Finanzas y Control Sectorial, encargada de gestionar la ejecución del registro, control y verificación de la contabilidad de la Subsecretaría, con el objeto de generar información confiable y eficiente que sirva para la toma de decisiones del Servicio, velando por el desarrollo de los procedimientos contables y financieros conforme la normativa vigente, aplicando en ello criterios según la Contabilidad Gubernamental, NIC-SP, de los Servicios relacionados con la materia.</p><p class="subtitulo">Funciones:</p><ol><li>Registrar la información financiera contable de manera oportuna y eficiente, de acuerdo a la normativa vigente, con la finalidad de proveer la información necesaria para la toma de decisiones.</li><li>Realizar el proceso de cálculo de las remuneraciones, jubilaciones e indemnizaciones de funcionarios/as de la Subsecretaría de Previsión Social.</li><li>Preparación de Balances y Estados Financieros de la Subsecretaría de Previsión Social y otros informes solicitados por los organismos de control y jefatura directa.</li><li>Efectuar revisión selectiva de materias propias del área de las rendiciones de fondos asignados a terceros vía proyectos provenientes del Fondo de Educación Previsional, así como también de los/as funcionarios/as que cuenten con recursos asignados.</li><li>Revisiones y análisis de cuentas por pagar mensuales y cuentas por cobrar.</li><li>Revisar diariamente que el registro de facturas se encuentre en Sistema de Gestión de Documentos Tributarios Electrónicos (SGDTE).</li><li>Análisis y revisión de la documentación de respaldo para pago, exceptuando los que provengan de un contrato y/o acuerdo complementario.</li><li>Efectuar control aleatorio a la toma de inventario realizada por la Unidad de Adquisiciones y Servicios Generales.</li><li>Efectuar cuadratura periódica entre el sistema contable y el sistema de inventario.</li><li>Cálculo y registro para la recuperación del Subsidio de Incapacidad Laboral.</li></ol>'>
+  Subunidad de<br>Gestión Financiera
+</button>
 
-        <button class="node cyan small"
-          style="left:830px; top:868px; width:120px; height:46px;"
-          data-title="Subunidad de Tesorería"
-          data-info='
-            <p class="persona">Christian Pérez Díaz</p><p class="cargo">Jefatura Subunidad de Tesorería</p><p>Subunidad dependiente Unidad de Presupuesto, Finanzas y Control Sectorial, encargada de controlar y manejar los recursos financieros de la Subsecretaría, velando por el cumplimiento de la normativa vigente en materia de operación de flujo monetario.</p><p class="subtitulo">Funciones:</p><ol><li>Controlar los recursos financieros asignados a la Institución, para dar cumplimiento a las obligaciones contraídas.</li><li>Realizar los pagos de las obligaciones contraídas por la Subsecretaría.</li><li>Velar por la custodia y gestión de los instrumentos de la Subsecretaría.</li><li>Controlar y custodiar los comprobantes contables.</li><li>Efectuar la proyección y registro de la distribución presupuestaria del FEP y del Anteproyecto Regional de Inversión (ARI) y del Programa Público de Inversiones Regionales (PROPIR) en el portal de Chile Indica.</li><li>Efectuar seguimiento a pagos centralizados efectuados por TGR enviando alertas vía correo.</li><li>Elaborar, controlar y gestionar programa de caja mensual con la Dirección de Presupuesto.</li><li>Ejecutar y gestionar las cobranzas a nivel institucional, incluido el Subsidio de Incapacidad Laboral.</li></ol>'>
-          Subunidad de<br>Tesorería
-        </button>
+<button class="node cyan small"
+  style="left:51.88%; top:94.35%; width:7.50%; height:5%;"
+  data-title="Subunidad de Tesorería"
+  data-info='
+    <p class="persona">Christian Pérez Díaz</p><p class="cargo">Jefatura Subunidad de Tesorería</p><p>Subunidad dependiente Unidad de Presupuesto, Finanzas y Control Sectorial, encargada de controlar y manejar los recursos financieros de la Subsecretaría, velando por el cumplimiento de la normativa vigente en materia de operación de flujo monetario.</p><p class="subtitulo">Funciones:</p><ol><li>Controlar los recursos financieros asignados a la Institución, para dar cumplimiento a las obligaciones contraídas.</li><li>Realizar los pagos de las obligaciones contraídas por la Subsecretaría.</li><li>Velar por la custodia y gestión de los instrumentos de la Subsecretaría.</li><li>Controlar y custodiar los comprobantes contables.</li><li>Efectuar la proyección y registro de la distribución presupuestaria del FEP y del Anteproyecto Regional de Inversión (ARI) y del Programa Público de Inversiones Regionales (PROPIR) en el portal de Chile Indica.</li><li>Efectuar seguimiento a pagos centralizados efectuados por TGR enviando alertas vía correo.</li><li>Elaborar, controlar y gestionar programa de caja mensual con la Dirección de Presupuesto.</li><li>Ejecutar y gestionar las cobranzas a nivel institucional, incluido el Subsidio de Incapacidad Laboral.</li></ol>'>
+  Subunidad de<br>Tesorería
+</button>
 
-        <button class="node cyan small"
-          style="left:1185px; top:790px; width:120px; height:44px;"
-          data-title="Oficina de Partes"
-          data-info='
-            <p class="persona">Jonathan Faundez González</p><p class="cargo">Jefatura Oficina de Partes</p><p>Oficina dependiente de la Unidad de Adquisiciones y Servicios Generales, encargada de la gestión documental de la Subsecretaría, tanto en el ingreso como egreso de la documentación oficial, manteniendo el registro, despacho y control de la información, como también de la custodia oficial de la información de la Subsecretaria en su ámbito de responsabilidad.</p><p class="subtitulo">Funciones:</p><ol><li>Gestionar la documentación de ingreso y egreso de la Subsecretaría, de manera oportuna y eficiente, manteniendo los registros y controles adecuados.</li><li>Mantener la custodia oficial de la documentación en su ámbito de responsabilidad, velando por su buen resguardo, estado de conservación, administración y control.</li></ol>'>
-          Oficina de<br>Partes
-        </button>
+<button class="node cyan small"
+  style="left:74.06%; top:85.87%; width:7.50%; height:4.78%;"
+  data-title="Oficina de Partes"
+  data-info='
+    <p class="persona">Jonathan Faundez González</p><p class="cargo">Jefatura Oficina de Partes</p><p>Oficina dependiente de la Unidad de Adquisiciones y Servicios Generales, encargada de la gestión documental de la Subsecretaría, tanto en el ingreso como egreso de la documentación oficial, manteniendo el registro, despacho y control de la información, como también de la custodia oficial de la información de la Subsecretaria en su ámbito de responsabilidad.</p><p class="subtitulo">Funciones:</p><ol><li>Gestionar la documentación de ingreso y egreso de la Subsecretaría, de manera oportuna y eficiente, manteniendo los registros y controles adecuados.</li><li>Mantener la custodia oficial de la documentación en su ámbito de responsabilidad, velando por su buen resguardo, estado de conservación, administración y control.</li></ol>'>
+  Oficina de<br>Partes
+</button>
 
-        <button class="node white main"
-          style="left:1390px; top:545px; width:180px; height:78px;"
-          data-title="Dirección de Tecnología de la Información"
-          data-info='
-            <p class="persona">Álvaro Gazmuri Cornejo</p><p class="cargo">Jefatura Dirección de Tecnologías de la Información</p><p>Dirección encargada de proponer, gestionar y ejecutar las distintas actividades relacionadas con el desarrollo estratégico y operacional de las tecnologías de la información en la Subsecretaría de Previsión Social.</p><p>Sus labores están orientadas a brindar soluciones tecnológicas que apoyen el cumplimiento de la estrategia y misión institucional; desarrollar y velar por el cumplimiento de políticas en los ámbitos de uso de los recursos computacionales, de sistemas de información y de seguridad de la información; asegurar la disponibilidad, seguridad y rendimiento de la infraestructura tecnológica y de los sistemas informáticos, de acuerdo a los lineamientos institucionales, las políticas y estándares definidos; entregar el soporte computacional; desarrollar o proponer los sistemas de información; y adoptar estándares y buenas prácticas en la gestión de las tecnologías de la información.</p>'>
-          Dirección de<br>Tecnología de la<br>Información
-        </button>
+<button class="node white main"
+  style="left:86.88%; top:59.24%; width:11.25%; height:8.48%;"
+  data-title="Dirección de Tecnología de la Información"
+  data-info='
+    <p class="persona">Álvaro Gazmuri Cornejo</p><p class="cargo">Jefatura Dirección de Tecnologías de la Información</p><p>Dirección encargada de proponer, gestionar y ejecutar las distintas actividades relacionadas con el desarrollo estratégico y operacional de las tecnologías de la información en la Subsecretaría de Previsión Social.</p><p>Sus labores están orientadas a brindar soluciones tecnológicas que apoyen el cumplimiento de la estrategia y misión institucional; desarrollar y velar por el cumplimiento de políticas en los ámbitos de uso de los recursos computacionales, de sistemas de información y de seguridad de la información; asegurar la disponibilidad, seguridad y rendimiento de la infraestructura tecnológica y de los sistemas informáticos, de acuerdo a los lineamientos institucionales, las políticas y estándares definidos; entregar el soporte computacional; desarrollar o proponer los sistemas de información; y adoptar estándares y buenas prácticas en la gestión de las tecnologías de la información.</p>'>
+  Dirección de<br>Tecnología de la<br>Información
+</button>
 
-        <button class="node cyan small"
-          style="left:1405px; top:690px; width:135px; height:46px;"
-          data-title="Unidad de Sistemas e Inteligencia de Negocios"
-          data-info='
-            <p class="persona">Renato Llantén Almonacid</p><p class="cargo">Jefatura Unidad de Sistemas e Inteligencia de Negocios</p><p>Unidad encargada de proponer, diseñar e implementar sistemas de información que apoyen los distintos procesos de la Subsecretaría, favoreciendo el cumplimiento de las estrategias institucionales y la puesta en valor de la información, mediante la automatización los procesos y generación de modelos de Inteligencia de Negocios.</p><p class="subtitulo">Funciones:</p><ol><li>Gestionar y promover la eficiencia y productividad de los procesos internos de la institución, mediante el desarrollo, implementación y mantención de sistemas de información estratégicos.</li><li>Coordinar e implementar las necesidades de sistemas tecnológicos de la institución, proponiendo para ello, herramientas que estén en línea con las directrices estratégicas de la institución y cumplan la satisfacción directa de los usuarios.</li><li>Supervisar, coordinar y ejecutar la política de seguridad y las normativas gubernamentales relacionadas a sitios y servicios web, considerando para ello, el aseguramiento de la usabilidad y accesibilidad.</li><li>Proponer, gestionar e implementar plataforma web que promuevan los sitios públicos y sitios internos, como interfaces de comunicación y participación de los procesos estratégicos de la institución.</li><li>Proponer y liderar proyectos de innovación tecnológica, que apoyen a la mejora continua en los procesos estratégicos de la institución, a través de Transformación Digital del Estado.</li><li>Mantener actualizado el mapa de Sistemas institucional.</li><li>Proponer, diseñar e implementar y difundir modelos de inteligencia de Negocios, que pongan en valor la información disponible y favorezca la gestión basada en evidencia, favoreciendo la gestión eficiente de los procesos institucionales.</li></ol>'>
-          Unidad de Sistemas<br>e Inteligencia de<br>Negocios
-        </button>
+<button class="node cyan small"
+  style="left:87.81%; top:75%; width:8.44%; height:5%;"
+  data-title="Unidad de Sistemas e Inteligencia de Negocios"
+  data-info='
+    <p class="persona">Renato Llantén Almonacid</p><p class="cargo">Jefatura Unidad de Sistemas e Inteligencia de Negocios</p><p>Unidad encargada de proponer, diseñar e implementar sistemas de información que apoyen los distintos procesos de la Subsecretaría, favoreciendo el cumplimiento de las estrategias institucionales y la puesta en valor de la información, mediante la automatización los procesos y generación de modelos de Inteligencia de Negocios.</p><p class="subtitulo">Funciones:</p><ol><li>Gestionar y promover la eficiencia y productividad de los procesos internos de la institución, mediante el desarrollo, implementación y mantención de sistemas de información estratégicos.</li><li>Coordinar e implementar las necesidades de sistemas tecnológicos de la institución, proponiendo para ello, herramientas que estén en línea con las directrices estratégicas de la institución y cumplan la satisfacción directa de los usuarios.</li><li>Supervisar, coordinar y ejecutar la política de seguridad y las normativas gubernamentales relacionadas a sitios y servicios web, considerando para ello, el aseguramiento de la usabilidad y accesibilidad.</li><li>Proponer, gestionar e implementar plataforma web que promuevan los sitios públicos y sitios internos, como interfaces de comunicación y participación de los procesos estratégicos de la institución.</li><li>Proponer y liderar proyectos de innovación tecnológica, que apoyen a la mejora continua en los procesos estratégicos de la institución, a través de Transformación Digital del Estado.</li><li>Mantener actualizado el mapa de Sistemas institucional.</li><li>Proponer, diseñar e implementar y difundir modelos de inteligencia de Negocios, que pongan en valor la información disponible y favorezca la gestión basada en evidencia, favoreciendo la gestión eficiente de los procesos institucionales.</li></ol>'>
+  Unidad de Sistemas<br>e Inteligencia de<br>Negocios
+</button>
 
-        <button class="node cyan small"
-          style="left:1405px; top:745px; width:135px; height:46px;"
-          data-title="Unidad de Infraestructura, Soporte y Seguridad de la Información"
-          data-info='
-            <p>Unidad encargada de la continuidad operativa de los dispositivos informáticos y la seguridad de la información.</p><p class="subtitulo">Funciones:</p><ol><li>Asegurar el funcionamiento de la plataforma de servicios tecnológicos centralizados que soporta el data center de comunicaciones y sistemas institucionales, mediante la implementación, gestión y mantención de la Infraestructura TI (Servidores y Telecomunicaciones).</li><li>Supervisar, coordinar y ejecutar la asistencia técnica del software y hardware institucional, garantizando calidad y oportunidad en la prestación del servicio a los distintos usuarios de la organización.</li><li>Proponer, gestionar y aplicar las políticas de seguridad de la información de la institución, y las recomendadas por otras instituciones relacionadas.</li><li>Coordinar e implementar las necesidades de equipamiento tecnológico de la institución, proponiendo para ello, herramientas que estén en línea con las directrices estratégicas de la institución y cumplan la satisfacción directa de los usuarios.</li><li>Administrar los recursos tecnológicos de la institución velando por el correcto uso de estos dispositivos.</li><li>Implementar y gestionar las soluciones de infraestructura Cloud en sus modalidades LaaS, PaaS y SaaS según sea el caso.</li><li>Gestionar las Cloud de ofimática, entre ellas Office, Correo Electrónico y todos aquellos que se integren a dicha plataforma colaborativa.</li><li>Implementar las mejores prácticas de Administración de Base de Datos, asegurando el óptimo desempeño de las diferentes Bases de Datos y seguridad de los datos e información contenida.</li><li>Mantener actualizado el inventario de activos de la información institucional, en particular los equipos bajo la custodia de la Dirección de Tecnologías de la Información.</li></ol>'>
-          Unidad de<br>Infraestructura, Soporte<br>y Seguridad de la<br>Información
-        </button>
+<button class="node cyan small"
+  style="left:87.81%; top:80.98%; width:8.44%; height:5%;"
+  data-title="Unidad de Infraestructura, Soporte y Seguridad de la Información"
+  data-info='
+    <p>Unidad encargada de la continuidad operativa de los dispositivos informáticos y la seguridad de la información.</p><p class="subtitulo">Funciones:</p><ol><li>Asegurar el funcionamiento de la plataforma de servicios tecnológicos centralizados que soporta el data center de comunicaciones y sistemas institucionales, mediante la implementación, gestión y mantención de la Infraestructura TI (Servidores y Telecomunicaciones).</li><li>Supervisar, coordinar y ejecutar la asistencia técnica del software y hardware institucional, garantizando calidad y oportunidad en la prestación del servicio a los distintos usuarios de la organización.</li><li>Proponer, gestionar y aplicar las políticas de seguridad de la información de la institución, y las recomendadas por otras instituciones relacionadas.</li><li>Coordinar e implementar las necesidades de equipamiento tecnológico de la institución, proponiendo para ello, herramientas que estén en línea con las directrices estratégicas de la institución y cumplan la satisfacción directa de los usuarios.</li><li>Administrar los recursos tecnológicos de la institución velando por el correcto uso de estos dispositivos.</li><li>Implementar y gestionar las soluciones de infraestructura Cloud en sus modalidades LaaS, PaaS y SaaS según sea el caso.</li><li>Gestionar las Cloud de ofimática, entre ellas Office, Correo Electrónico y todos aquellos que se integren a dicha plataforma colaborativa.</li><li>Implementar las mejores prácticas de Administración de Base de Datos, asegurando el óptimo desempeño de las diferentes Bases de Datos y seguridad de los datos e información contenida.</li><li>Mantener actualizado el inventario de activos de la información institucional, en particular los equipos bajo la custodia de la Dirección de Tecnologías de la Información.</li></ol>'>
+  Unidad de<br>Infraestructura, Soporte<br>y Seguridad de la<br>Información
+</button>
 
-        <button class="node cyan small"
-          style="left:1405px; top:800px; width:135px; height:52px;"
-          data-title="Unidad de Administración de Tecnologías de la Información"
-          data-info='
-            <p class="persona">Alejandra Miranda Riquelme</p><p class="cargo">Jefatura Unidad de Administración de Tecnologías de la Información</p>
-          <p>La Unidad de Administración de Tecnologías de la Información (UATI) tiene como función general asegurar la adquisición, administración y mantenimiento eficientes y efectivos de las tecnologías de la información, garantizando el cumplimiento normativo, la optimización de recursos, la innovación tecnológica y la alineación con los objetivos estratégicos de la organización. Esto se logra mediante la planificación estratégica, la gestión de presupuestos, la evaluación y selección de proveedores, la organización de licitaciones, la supervisión de contratos, el soporte técnico, y la implementación de políticas de seguridad y mejora continua.</p>
-          <p class="subtitulo">Funciones:</p><ol>
-          <li>Controlar y supervisar el presupuesto asignado a la compra y mantenimiento de equipos y servicios de TI.</li>
-          <li>Gestión de contratos que implica involucrarse en el ciclo de vida completo de los acuerdos, desde su creación hasta su terminación.</li><li>Definir y actualizar la estrategia de adquisición de tecnologías y servicios, alineándola con los objetivos organizacionales.
-          </li><li>Crear y mantener políticas y procedimientos claros para la adquisición y administración de tecnologías de la información, proponiendo los términos y condiciones acordados entre las partes involucradas.</li>
-          <li>Supervisar la redacción, negociación y administración de contratos con proveedores de tecnologías de la información, incluyendo la evaluación y negociación de cláusulas contractuales para garantizar que sean justas y beneficiosas para las partes.</li>
-          <li>Mitigación de Riesgos, identificar y minimizar los riesgos asociados con los contratos, como incumplimientos o multas.</li><li>Guardar de manera segura los contratos y toda la información relevante. Facilitar el acceso inmediato si se solicita.</li>
-          <li>Supervisar el cumplimiento de los plazos establecidos en los contratos.</li>
-          <li>Evaluar si los contratos deben renovarse, renegociarse o rescindirse según las necesidades de la institución y el desempeño del proveedor.</li>
-          <li>Generar reportes regulares sobre el estado de las adquisiciones y someterse a auditorías internas y externas para asegurar el cumplimiento normativo.</li>
-          <li>Colaborar con otras áreas de la organización para identificar y evaluar sus necesidades tecnológicas.</li><li>Organizar y gestionar el proceso de licitación, incluyendo la preparación de documentos de licitación, la evaluación de propuestas y la selección de proveedores.</li>
-          <li>Ser la contraparte de los procesos de compra de la Dirección de Tecnologías de la Información.</li>
-          <li>Generar reportes regulares y materias administrativas en cuanto al inventario de todos los activos tecnológicos, incluyendo hardware, software y servicios contratados.</li>
-          <li>Evaluar y mejorar continuamente los procesos de adquisición y administración de tecnologías de la información para aumentar la eficiencia y reducir costos.</li>
-          <li>Estar al tanto de las tendencias y avances tecnológicos para recomendar nuevas soluciones que mejoren la eficiencia y competitividad de la organización.</li></ol>'>
-          Unidad de<br>Administración de<br>Tecnologías de la<br>Información
-        </button>
-
+<button class="node cyan small"
+  style="left:87.81%; top:86.96%; width:8.44%; height:5.65%;"
+  data-title="Unidad de Administración de Tecnologías de la Información"
+  data-info='
+    <p class="persona">Alejandra Miranda Riquelme</p><p class="cargo">Jefatura Unidad de Administración de Tecnologías de la Información</p>
+  <p>La Unidad de Administración de Tecnologías de la Información (UATI) tiene como función general asegurar la adquisición, administración y mantenimiento eficientes y efectivos de las tecnologías de la información, garantizando el cumplimiento normativo, la optimización de recursos, la innovación tecnológica y la alineación con los objetivos estratégicos de la organización. Esto se logra mediante la planificación estratégica, la gestión de presupuestos, la evaluación y selección de proveedores, la organización de licitaciones, la supervisión de contratos, el soporte técnico, y la implementación de políticas de seguridad y mejora continua.</p>
+  <p class="subtitulo">Funciones:</p><ol>
+  <li>Controlar y supervisar el presupuesto asignado a la compra y mantenimiento de equipos y servicios de TI.</li>
+  <li>Gestión de contratos que implica involucrarse en el ciclo de vida completo de los acuerdos, desde su creación hasta su terminación.</li><li>Definir y actualizar la estrategia de adquisición de tecnologías y servicios, alineándola con los objetivos organizacionales.
+  </li><li>Crear y mantener políticas y procedimientos claros para la adquisición y administración de tecnologías de la información, proponiendo los términos y condiciones acordados entre las partes involucradas.</li>
+  <li>Supervisar la redacción, negociación y administración de contratos con proveedores de tecnologías de la información, incluyendo la evaluación y negociación de cláusulas contractuales para garantizar que sean justas y beneficiosas para las partes.</li>
+  <li>Mitigación de Riesgos, identificar y minimizar los riesgos asociados con los contratos, como incumplimientos o multas.</li><li>Guardar de manera segura los contratos y toda la información relevante. Facilitar el acceso inmediato si se solicita.</li>
+  <li>Supervisar el cumplimiento de los plazos establecidos en los contratos.</li>
+  <li>Evaluar si los contratos deben renovarse, renegociarse o rescindirse según las necesidades de la institución y el desempeño del proveedor.</li>
+  <li>Generar reportes regulares sobre el estado de las adquisiciones y someterse a auditorías internas y externas para asegurar el cumplimiento normativo.</li>
+  <li>Colaborar con otras áreas de la organización para identificar y evaluar sus necesidades tecnológicas.</li><li>Organizar y gestionar el proceso de licitación, incluyendo la preparación de documentos de licitación, la evaluación de propuestas y la selección de proveedores.</li>
+  <li>Ser la contraparte de los procesos de compra de la Dirección de Tecnologías de la Información.</li>
+  <li>Generar reportes regulares y materias administrativas en cuanto al inventario de todos los activos tecnológicos, incluyendo hardware, software y servicios contratados.</li>
+  <li>Evaluar y mejorar continuamente los procesos de adquisición y administración de tecnologías de la información para aumentar la eficiencia y reducir costos.</li>
+  <li>Estar al tanto de las tendencias y avances tecnológicos para recomendar nuevas soluciones que mejoren la eficiencia y competitividad de la organización.</li></ol>'>
+  Unidad de<br>Administración de<br>Tecnologías de la<br>Información
+</button>
+       
       </div>
 
       <div class="footer-band">
