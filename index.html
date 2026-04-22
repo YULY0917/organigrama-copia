@@ -70,11 +70,11 @@
   }
 
   .board{
-  position:relative;
-  width:100%;
-  aspect-ratio:1600 / 920;
-  background:var(--bg);
-}
+    position:relative;
+    width:100%;
+    aspect-ratio:1600 / 920;
+    background:var(--bg);
+  }
 
   .board svg.lines{
     position:absolute;
@@ -106,40 +106,42 @@
   }
 
   .node{
-  position:absolute;
-  z-index:4;
-  border:none;
-  cursor:pointer;
-  transition:transform .18s ease, filter .18s ease;
-  text-align:center;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-  word-break:break-word;
-  padding:.35% .35%;
-  border-radius:0;
-}
+    position:absolute;
+    z-index:4;
+    border:none;
+    cursor:pointer;
+    transition:transform .18s ease, filter .18s ease;
+    text-align:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+    word-break:break-word;
+    padding:.35% .35%;
+    border-radius:0;
+  }
 
   .node:hover{
-  transform:translateY(-2px);
-  filter:brightness(1.03);
-}
+    transform:translateY(-2px);
+    filter:brightness(1.03);
+  }
 
   .node.white{
-  background:var(--white);
-  color:var(--text-dark);
-  box-shadow:var(--shadow);
-  font-weight:700;
-}
- .node.cyan{
-  background:var(--cyan);
-  color:var(--text-dark);
-  font-weight:500;
-  box-shadow:none;
-  min-height:50px;
-  padding:.42% .34%;
-}
+    background:var(--white);
+    color:var(--text-dark);
+    box-shadow:var(--shadow);
+    font-weight:700;
+  }
+
+  .node.cyan{
+    background:var(--cyan);
+    color:var(--text-dark);
+    font-weight:500;
+    box-shadow:none;
+    min-height:50px;
+    padding:.42% .34%;
+  }
+
   .node.big{
     font-size:clamp(13px, 1.05vw, 18px);
     font-weight:800;
@@ -152,13 +154,14 @@
   }
 
   .node.small{
-  font-size:clamp(8px,.68vw,10.5px);
-  line-height:1.05;
-  padding:.30% .28%;
-}
-    .node.cyan:hover{
-  transform:translateY(-2px);
-}
+    font-size:clamp(8px,.68vw,10.5px);
+    line-height:1.05;
+    padding:.30% .28%;
+  }
+
+  .node.cyan:hover{
+    transform:translateY(-2px);
+  }
     
   .footer-band{
     background:#18b9e5;
@@ -330,7 +333,6 @@
       filter:none;
     }
   }
-</style>
   </style>
 </head>
 <body>
@@ -339,7 +341,7 @@
     <div class="org-wrapper">
       <div class="org-header-bar"></div>
 
-     <div class="board">
+      <div class="board">
 
 <!-- TÍTULOS -->
 <div class="section-title" style="left:28%; top:11%;">Áreas de Control</div>
@@ -375,16 +377,16 @@
   <line x1="1020" y1="262" x2="1060" y2="262"/>
   <line x1="1020" y1="320" x2="1060" y2="320"/>
 
-     <!-- TRONCAL PRINCIPAL INFERIOR -->
-<line x1="120" y1="505" x2="1480" y2="505"/>
+  <!-- TRONCAL PRINCIPAL INFERIOR -->
+  <line x1="120" y1="505" x2="1480" y2="505"/>
 
-<!-- BAJADAS A CAJAS BLANCAS -->
-<line x1="117.5" y1="505" x2="117.5" y2="545"/>
-<line x1="312.5" y1="505" x2="312.5" y2="545"/>
-<line x1="492.5" y1="505" x2="492.5" y2="545"/>
-<line x1="685" y1="505" x2="685" y2="545"/>
-<line x1="1090" y1="505" x2="1090" y2="545"/>
-<line x1="1480" y1="505" x2="1480" y2="545"/>
+  <!-- BAJADAS A CAJAS BLANCAS -->
+  <line x1="117.5" y1="505" x2="117.5" y2="545"/>
+  <line x1="312.5" y1="505" x2="312.5" y2="545"/>
+  <line x1="492.5" y1="505" x2="492.5" y2="545"/>
+  <line x1="685" y1="505" x2="685" y2="545"/>
+  <line x1="1090" y1="505" x2="1090" y2="545"/>
+  <line x1="1480" y1="505" x2="1480" y2="545"/>
   
   <!-- EDUCACIÓN PREVISIONAL -->
   <line x1="58" y1="623" x2="58" y2="770"/>
@@ -414,7 +416,7 @@
   <line x1="1167.5" y1="650" x2="1167.5" y2="690"/>
   <line x1="1307.5" y1="650" x2="1307.5" y2="690"/>
 
-    <!-- SUBUNIDADES PRESUPUESTO -->
+  <!-- SUBUNIDADES PRESUPUESTO -->
   <line x1="857.5" y1="742" x2="857.5" y2="780"/>
   <line x1="857.5" y1="780" x2="820" y2="780"/>
   <line x1="820" y1="780" x2="820" y2="891"/>
@@ -426,19 +428,15 @@
   <line x1="1167.5" y1="812" x2="1185" y2="812"/>
 
   <!-- TECNOLOGÍA DE LA INFORMACIÓN -->
-
-<line x1="1480" y1="623" x2="1480" y2="680"/>
-<line x1="1480" y1="680" x2="1395" y2="680"/>
-
-<line x1="1395" y1="680" x2="1395" y2="815"/>
-
-<line x1="1395" y1="705" x2="1405" y2="705"/>
-<line x1="1395" y1="760" x2="1405" y2="760"/>
-<line x1="1395" y1="815" x2="1405" y2="815"/>
-  
+  <line x1="1480" y1="623" x2="1480" y2="680"/>
+  <line x1="1480" y1="680" x2="1395" y2="680"/>
+  <line x1="1395" y1="680" x2="1395" y2="815"/>
+  <line x1="1395" y1="705" x2="1405" y2="705"/>
+  <line x1="1395" y1="760" x2="1405" y2="760"/>
+  <line x1="1395" y1="815" x2="1405" y2="815"/>
 </svg>
-       
-       <!-- NODOS -->
+
+<!-- NODOS -->
 <button class="node white big"
   style="left:40.94%; top:6.74%; width:16.25%; height:8.04%;"
   data-title="SUBSECRETARIA"
@@ -624,7 +622,6 @@ Jefatura Asesores</p><p>Área encargada de proporcionar apoyo a la gestión téc
     <p class="persona">Katherine Cáceres Fuentes</p><p class="cargo">Jefatura Unidad de Coordinación y Seguimiento Legislativo</p><p>Unidad responsable de apoyar a la Dirección en el seguimiento, coordinación y gestión de proyectos de desarrollo con las Instituciones del sector, y de sus respectivas planificaciones estratégicas.</p><p>Además, es responsable de monitorear el desempeño de los canales de atención del sector, y coordinar con ellos actividades orientadas al intercambio de experiencias y hacia la mejora continua de sus procesos.</p><p class="subtitulo">Funciones:</p><ol><li>Establecer una contraparte para coordinación permanente en cada una de las Instituciones Previsionales y Seguridad Social, desarrollando un plan de trabajo con el objetivo de cumplir las políticas públicas de gobierno en las materias de su competencia.</li><li>Solicitar información para conocer la planificación estratégica de las Instituciones del sector, sus indicadores y sus compromisos de metas.</li><li>Analizar y conocer la experiencia de la ciudadanía en los distintos canales de atención, a fin de proponer mejoras y/o estandarización de éstos.</li><li>Revisión de evaluaciones y/o estudios de satisfacción de usuarios de los canales de atención y sus planes de mejora de las instituciones previsionales y de seguridad social.</li><li>Revisar dentro del sector previsional nacional e internacional, las experiencias exitosas en relación con usuarios en el sector de Seguridad Social, generando instancias para compartirlas y potenciarlas.</li><li>Coordinar y/o implementar trabajos colaborativos o proyectos inter-Unidades de la Dirección.</li><li>Velar por el proceso para el cumplimiento de los indicadores de PMG y CDC a cargo de la Unidad.</li></ol>'>
   Unidad de Coordinación<br>y Seguimiento Legislativo
 </button>
-
 <button class="node white main"
   style="left:36.88%; top:59.24%; width:11.88%; height:8.48%;"
   data-title="División de Asesoría Legislativa y Seguridad Laboral"
@@ -733,7 +730,7 @@ Jefatura Asesores</p><p>Área encargada de proporcionar apoyo a la gestión téc
   style="left:87.81%; top:80.98%; width:8.44%; height:5%;"
   data-title="Unidad de Infraestructura, Soporte y Seguridad de la Información"
   data-info='
-    <p>Unidad encargada de la continuidad operativa de los dispositivos informáticos y la seguridad de la información.</p><p class="subtitulo">Funciones:</p><ol><li>Asegurar el funcionamiento de la plataforma de servicios tecnológicos centralizados que soporta el data center de comunicaciones y sistemas institucionales, mediante la implementación, gestión y mantención de la Infraestructura TI (Servidores y Telecomunicaciones).</li><li>Supervisar, coordinar y ejecutar la asistencia técnica del software y hardware institucional, garantizando calidad y oportunidad en la prestación del servicio a los distintos usuarios de la organización.</li><li>Proponer, gestionar y aplicar las políticas de seguridad de la información de la institución, y las recomendadas por otras instituciones relacionadas.</li><li>Coordinar e implementar las necesidades de equipamiento tecnológico de la institución, proponiendo para ello, herramientas que estén en línea con las directrices estratégicas de la institución y cumplan la satisfacción directa de los usuarios.</li><li>Administrar los recursos tecnológicos de la institución velando por el correcto uso de estos dispositivos.</li><li>Implementar y gestionar las soluciones de infraestructura Cloud en sus modalidades LaaS, PaaS y SaaS según sea el caso.</li><li>Gestionar las Cloud de ofimática, entre ellas Office, Correo Electrónico y todos aquellos que se integren a dicha plataforma colaborativa.</li><li>Implementar las mejores prácticas de Administración de Base de Datos, asegurando el óptimo desempeño de las diferentes Bases de Datos y seguridad de los datos e información contenida.</li><li>Mantener actualizado el inventario de activos de la información institucional, en particular los equipos bajo la custodia de la Dirección de Tecnologías de la Información.</li></ol>'>
+    <p class="persona">Jefatura Unidad</p><p class="cargo">Unidad de Infraestructura, Soporte y Seguridad de la Información</p><p>Unidad encargada de administrar la infraestructura tecnológica institucional, soporte a usuarios y seguridad de la información.</p><p class="subtitulo">Funciones:</p><ol><li>Administrar servidores, redes, conectividad y plataformas institucionales.</li><li>Entregar soporte técnico a usuarios y asegurar continuidad operacional.</li><li>Implementar controles y políticas de seguridad de la información.</li><li>Gestionar respaldos, monitoreo y disponibilidad de servicios tecnológicos.</li><li>Implementar y gestionar las soluciones de infraestructura Cloud en sus modalidades IaaS, PaaS y SaaS según sea el caso.</li><li>Gestionar las Cloud de ofimática, entre ellas Office, Correo Electrónico y todos aquellos que se integren a dicha plataforma colaborativa.</li><li>Implementar las mejores prácticas de Administración de Base de Datos, asegurando el óptimo desempeño de las diferentes Bases de Datos y seguridad de los datos e información contenida.</li><li>Mantener actualizado el inventario de activos de la información institucional, en particular los equipos bajo la custodia de la Dirección de Tecnologías de la Información.</li></ol>'>
   Unidad de<br>Infraestructura, Soporte<br>y Seguridad de la<br>Información
 </button>
 
@@ -745,8 +742,7 @@ Jefatura Asesores</p><p>Área encargada de proporcionar apoyo a la gestión téc
   <p>La Unidad de Administración de Tecnologías de la Información (UATI) tiene como función general asegurar la adquisición, administración y mantenimiento eficientes y efectivos de las tecnologías de la información, garantizando el cumplimiento normativo, la optimización de recursos, la innovación tecnológica y la alineación con los objetivos estratégicos de la organización. Esto se logra mediante la planificación estratégica, la gestión de presupuestos, la evaluación y selección de proveedores, la organización de licitaciones, la supervisión de contratos, el soporte técnico, y la implementación de políticas de seguridad y mejora continua.</p>
   <p class="subtitulo">Funciones:</p><ol>
   <li>Controlar y supervisar el presupuesto asignado a la compra y mantenimiento de equipos y servicios de TI.</li>
-  <li>Gestión de contratos que implica involucrarse en el ciclo de vida completo de los acuerdos, desde su creación hasta su terminación.</li><li>Definir y actualizar la estrategia de adquisición de tecnologías y servicios, alineándola con los objetivos organizacionales.
-  </li><li>Crear y mantener políticas y procedimientos claros para la adquisición y administración de tecnologías de la información, proponiendo los términos y condiciones acordados entre las partes involucradas.</li>
+  <li>Gestión de contratos que implica involucrarse en el ciclo de vida completo de los acuerdos, desde su creación hasta su terminación.</li><li>Definir y actualizar la estrategia de adquisición de tecnologías y servicios, alineándola con los objetivos organizacionales.</li><li>Crear y mantener políticas y procedimientos claros para la adquisición y administración de tecnologías de la información, proponiendo los términos y condiciones acordados entre las partes involucradas.</li>
   <li>Supervisar la redacción, negociación y administración de contratos con proveedores de tecnologías de la información, incluyendo la evaluación y negociación de cláusulas contractuales para garantizar que sean justas y beneficiosas para las partes.</li>
   <li>Mitigación de Riesgos, identificar y minimizar los riesgos asociados con los contratos, como incumplimientos o multas.</li><li>Guardar de manera segura los contratos y toda la información relevante. Facilitar el acceso inmediato si se solicita.</li>
   <li>Supervisar el cumplimiento de los plazos establecidos en los contratos.</li>
