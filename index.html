@@ -132,12 +132,16 @@
   box-shadow:var(--shadow);
   font-weight:700;
 }
-  .node.cyan{
+ .node.cyan{
   background:var(--cyan);
   color:var(--text-dark);
   font-weight:500;
   box-shadow:none;
-  padding:.42% .38%;
+
+  width:auto;
+  min-height:52px;
+
+  padding:.55% .45%;
 }
   .node.big{
     font-size:clamp(13px, 1.05vw, 18px);
@@ -151,9 +155,12 @@
   }
 
   .node.small{
-  font-size:clamp(8.5px, .68vw, 11px);
-  line-height:1.08;
-  padding:.34% .34%;
+  font-size:clamp(9px,.78vw,12px);
+  line-height:1.10;
+  padding:.40% .34%;
+}
+    .node.cyan:hover{
+  transform:translateY(-2px);
 }
     
   .footer-band{
